@@ -1,4 +1,355 @@
-h1 {
-  color: red;
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon.eot?vcj2jq");
+  src: url("../fonts/icomoon.eot?vcj2jq#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?vcj2jq") format("truetype"), url("../fonts/icomoon.woff?vcj2jq") format("woff"), url("../fonts/icomoon.svg?vcj2jq#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-left:before {
+  content: "\e900";
+}
+
+.icon-arrow-right:before {
+  content: "\e901";
+}
+
+.icon-bookmark:before {
+  content: "\e902";
+}
+
+.icon-check:before {
+  content: "\e903";
+}
+
+.icon-dollar-sign:before {
+  content: "\e904";
+}
+
+.icon-heart:before {
+  content: "\e905";
+}
+
+.icon-help-circle:before {
+  content: "\e906";
+}
+
+.icon-home:before {
+  content: "\e907";
+}
+
+.icon-mail:before {
+  content: "\e908";
+}
+
+.icon-plus:before {
+  content: "\e909";
+}
+
+.icon-settings:before {
+  content: "\e90a";
+}
+
+.icon-shopping-cart2:before {
+  content: "\e90b";
+}
+
+.icon-thumbs-down:before {
+  content: "\e90c";
+}
+
+.icon-thumbs-up:before {
+  content: "\e90d";
+}
+
+.icon-trash-2:before {
+  content: "\e90e";
+}
+
+.icon-truck:before {
+  content: "\e90f";
+}
+
+.icon-user:before {
+  content: "\e910";
+}
+
+.icon-users:before {
+  content: "\e911";
+}
+
+.icon-x:before {
+  content: "\e912";
+}
+
+.icon-shopping-bag:before {
+  content: "\e913";
+}
+
+.icon-shopping-cart:before {
+  content: "\e914";
+}
+
+.icon-search:before {
+  content: "\e915";
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.nav {
+  height: 60px;
+  line-height: 60px;
+  background-color: #337afd;
+  color: white;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: #7a87cc;
+}
+
+.nav .logoContainer {
+  float: left;
+  margin-left: 5%;
+}
+
+.nav .logoContainer h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.nav .loginContainer {
+  float: right;
+  margin-right: 5%;
+  display: inline-block;
+  font-size: 1.1rem;
+}
+
+.nav .loginContainer a:last-of-type {
+  color: #fffb00;
+}
+
+.nav .loginContainer a:hover {
+  color: #7a87cc;
+}
+
+.searchContainer {
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.searchContainer .searchBar {
+  margin: auto;
+  height: 2vh;
+  transition: 0.5s;
+}
+
+.searchContainer .searchBar input, .searchContainer .searchBar button {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 20px;
+  border-radius: 0;
+  -webkit-appearance: none;
+  border: 1px solid #e2e2e2;
+  color: #969696;
+  transition: 0.3s;
+}
+
+.searchContainer .searchBar input {
+  width: 40vw;
+}
+
+.searchContainer .searchBar input::placeholder {
+  color: #969696;
+}
+
+.searchContainer .searchBar button:hover {
+  color: #349ef3;
+  border-color: #349ef3;
+  border-radius: 30%;
+}
+
+.searchContainer .searchBar:active button, .searchContainer .searchBar:focus button {
+  border-color: #64B5F6;
+  color: #64B5F6;
+}
+
+.categoryPanelContainer {
+  width: 100%;
+  background-color: #d5d5d5;
+  margin: auto;
+  margin-top: 80px;
+  height: auto;
+}
+
+.categoryPanelContainer .categoryPanel {
+  margin: auto;
+  width: 90%;
+}
+
+.categoryPanelContainer .categoryPanel button {
+  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 12%;
+  border-radius: 0;
+  height: 40px;
+  border: 0;
+  background-color: #d5d5d5;
+  color: #7c7c7c;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.categoryPanelContainer .categoryPanel button:hover {
+  background-color: #c9c9c9;
+}
+
+.itemDisplay {
+  margin: auto;
+  width: 100%;
+  background-color: #7a87cc;
+}
+
+.itemDisplay .itemDisplay_One {
+  width: 70%;
+  margin: auto;
+  height: 300px;
+  overflow: hidden;
+}
+
+.itemDisplay .itemDisplay_One .itemDisplay_textContainer {
+  width: 33%;
+  height: 100%;
+  position: absolute;
+  padding-left: 50px;
+  color: white;
+}
+
+.itemDisplay .itemDisplay_One .itemDisplay_textContainer button {
+  margin: 0 auto;
+  display: block;
+  border-radius: 0;
+  width: 150px;
+  height: 40px;
+  background-color: transparent;
+  color: white;
+  font-size: 17px;
+  border: 2px solid white;
+  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.itemDisplay .itemDisplay_One .itemDisplay_textContainer button:hover {
+  background-color: #fff;
+  color: #6876c5;
+  cursor: pointer;
+}
+
+.itemDisplay .itemDisplay_One .itemDisplay_textContainer h2 {
+  font-size: 50px;
+  margin: 0;
+  margin-top: 30px;
+}
+
+.itemDisplay .itemDisplay_One .itemDisplay_textContainer h3 {
+  font-size: 20px;
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.itemDisplay .itemDisplay_One img {
+  width: auto;
+  float: right;
+  height: 300px;
+}
+
+.recentlyViewed {
+  margin-top: 50px;
+}
+
+.recentlyViewed h2 {
+  margin-left: 50px;
+}
+
+.recentlyViewed .recentlyViewedItem_row {
+  width: 80%;
+  margin: auto;
+}
+
+.recentlyViewed .recentlyViewedItem_row .recentlyViewedItem {
+  height: 300px;
+  width: 250px;
+  background-color: #fcfcfc;
+  display: inline-block;
+  border: 1px solid #fcfcfc;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.recentlyViewed .recentlyViewedItem_row .recentlyViewedItem img {
+  display: block;
+  border: 1px solid #f9f9f9;
+  margin: auto;
+  height: auto;
+  max-height: 200px;
+  margin-top: 10px;
+}
+
+.recentlyViewed .recentlyViewedItem_row .recentlyViewedItem h3 {
+  color: #7c7c7c;
+}
+
+.recentlyViewed .recentlyViewedItem_row .recentlyViewedItem h4 {
+  color: #afafaf;
+}
+
+.recentlyViewed .recentlyViewedItem_row .recentlyViewedItem:hover {
+  border: 1px solid #e2e2e2;
+}
+
+.footer {
+  background-color: #e2e2e2;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  margin-top: 30px;
+}
+
+.footer h4 {
+  margin: 0 auto;
 }
 /*# sourceMappingURL=style.css.map */

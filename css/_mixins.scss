@@ -1,0 +1,14 @@
+// COLORS
+$primaryColor: #64B5F6;
+$darkPrimaryColor: darken($primaryColor, 10%);
+$secondaryColor: #9fa8da;
+$accentColor: darken($secondaryColor, 10%);
+$grey: rgb(226, 226, 226);
+
+// MATERIAL COLORS
+
+// MATERIAL MOTION TIMING
+$ease-in: cubic-bezier(0.4, 0.0, 1, 1);
+$sharp-curve: cubic-bezier(0.4, 0.0, 0.6, 1);
+$ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
+$standard-curve: cubic-bezier(0.4, 0.0, 0.2, 1);
