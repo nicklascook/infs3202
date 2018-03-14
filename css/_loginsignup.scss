@@ -1,0 +1,147 @@
+
+.loginModalContainer{
+    position: absolute;
+    height: 100vh;
+    overflow: hidden;
+    width: 100vw;
+    margin: 0;
+    @include linear-gradient(45deg, lighten($primaryColor,20%), lighten($accentColor, 15%));
+
+    .loginModal{
+        height: 80vh;
+        width: 35vw;
+        margin: 0 auto;
+        position: relative;
+        text-align: center;
+        top: 50%;
+        transform: translateY(-53%);
+        background-color: white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.10);
+
+        .registerLink{
+            text-align: center;
+            width: 100%;
+            padding-top: 40px;
+            margin-left: 10px;
+        }
+
+        h1{
+            background-color: $primaryColor;
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            color: white;
+            a{
+                font-family: 'Raleway', sans-serif;
+                text-decoration: none;
+                color: white;
+                &:hover{
+                    text-decoration: underline;
+                }
+              }
+        }
+        
+        h2{
+            @include linear-gradient(140deg, $primaryColor, darken($primaryColor, 40%));
+            width: auto;
+            max-width: 60%;
+            margin: 0 auto;
+            border-radius: 50px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: white;
+        }
+        .signupTitle{
+            @include linear-gradient(140deg, #ffa726, #ff7043);
+        }
+
+        .loginForm{
+            width: 60%;
+            margin: 0 auto;
+            margin-top: 40px;
+            p{
+                float: left;  
+                margin: 0;  
+                color: $secondaryColor;
+                margin-left: 10px;
+            }
+            .btn{
+                width: 130px;
+                margin: 0 auto;
+                margin-top: 20px;
+                background-color: $accentColor;
+                color: white;
+                border-color: $accentColor;
+
+                &:hover{
+                    background-color: #fff;
+                    color: darken($accentColor, 5%);
+                    border-color: $accentColor;
+                }
+            }
+            .btn-secondary{
+                background-color: #ffa726;
+                border-color: #ffa726;
+                &:hover{
+                    color: #ffa726;
+                    border-color: #ffa726;
+                }
+            }
+            
+        
+            input{
+                width: 80%;
+                padding-left: 10%;
+                padding-right: 10%;
+                // float: left;
+                height: 30px;
+                border: none;
+                font-size: 20px;
+                margin-bottom: 30px;
+                margin-top: 10px;
+                transition: 0.3s $standard-curve;
+                border-bottom: 2px solid lighten($accentColor, 25%);
+               
+                &:focus{
+                    outline: 0;
+                    border-bottom: 2px solid $accentColor;
+                    &::after{
+                        width: 100%;
+                    }
+                }
+            }
+
+        }
+
+        .signupForm{
+            @extend .loginForm;
+
+            .loginLink{
+                @extend .registerLink;
+                color: lighten(#ff7043, 20%);
+                
+                a{
+                    color: #e64a19;
+                    
+                }
+            }
+            p{
+                color: lighten(#ff7043, 20%);
+            }
+            input{
+                border-color: lighten(#ff7043, 20%);
+                margin-bottom: 20px;
+                &:focus{
+                    border-color: #e64a19;
+                }
+            }
+            
+        }
+        
+    }
+
+}
+.registerModalContainer{
+            @extend .loginModalContainer;
+            @include linear-gradient(-130deg, lighten(#ffa726, 30%), lighten(#ff7043,18%));
+        }

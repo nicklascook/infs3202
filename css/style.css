@@ -9,7 +9,6 @@
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
-  speak: none;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -108,9 +107,191 @@
   content: "\e915";
 }
 
+.icon-lock:before {
+  content: "\e916";
+}
+
+.loginModalContainer, .registerModalContainer {
+  position: absolute;
+  height: 100vh;
+  overflow: hidden;
+  width: 100vw;
+  margin: 0;
+  background-image: -o-linear-gradient(45deg, #c4e3fc, #b1b9e1);
+  background-image: -moz-linear-gradient(45deg, #c4e3fc, #b1b9e1);
+  background-image: -webkit-linear-gradient(45deg, #c4e3fc, #b1b9e1);
+  background-image: linear-gradient(45deg, #c4e3fc, #b1b9e1);
+}
+
+.loginModalContainer .loginModal, .registerModalContainer .loginModal {
+  height: 80vh;
+  width: 35vw;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-53%);
+  background-color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.1);
+}
+
+.loginModalContainer .loginModal .registerLink, .registerModalContainer .loginModal .registerLink, .loginModalContainer .loginModal .signupForm .loginLink, .registerModalContainer .loginModal .signupForm .loginLink {
+  text-align: center;
+  width: 100%;
+  padding-top: 40px;
+  margin-left: 10px;
+}
+
+.loginModalContainer .loginModal h1, .registerModalContainer .loginModal h1 {
+  background-color: #64B5F6;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: white;
+}
+
+.loginModalContainer .loginModal h1 a, .registerModalContainer .loginModal h1 a {
+  font-family: 'Raleway', sans-serif;
+  text-decoration: none;
+  color: white;
+}
+
+.loginModalContainer .loginModal h1 a:hover, .registerModalContainer .loginModal h1 a:hover {
+  text-decoration: underline;
+}
+
+.loginModalContainer .loginModal h2, .registerModalContainer .loginModal h2 {
+  background-image: -o-linear-gradient(140deg, #64B5F6, #084e86);
+  background-image: -moz-linear-gradient(140deg, #64B5F6, #084e86);
+  background-image: -webkit-linear-gradient(140deg, #64B5F6, #084e86);
+  background-image: linear-gradient(140deg, #64B5F6, #084e86);
+  width: auto;
+  max-width: 60%;
+  margin: 0 auto;
+  border-radius: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+}
+
+.loginModalContainer .loginModal .signupTitle, .registerModalContainer .loginModal .signupTitle {
+  background-image: -o-linear-gradient(140deg, #ffa726, #ff7043);
+  background-image: -moz-linear-gradient(140deg, #ffa726, #ff7043);
+  background-image: -webkit-linear-gradient(140deg, #ffa726, #ff7043);
+  background-image: linear-gradient(140deg, #ffa726, #ff7043);
+}
+
+.loginModalContainer .loginModal .loginForm, .registerModalContainer .loginModal .loginForm, .loginModalContainer .loginModal .signupForm, .registerModalContainer .loginModal .signupForm {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.loginModalContainer .loginModal .loginForm p, .registerModalContainer .loginModal .loginForm p, .loginModalContainer .loginModal .signupForm p, .registerModalContainer .loginModal .signupForm p {
+  float: left;
+  margin: 0;
+  color: #9fa8da;
+  margin-left: 10px;
+}
+
+.loginModalContainer .loginModal .loginForm .btn, .registerModalContainer .loginModal .loginForm .btn, .loginModalContainer .loginModal .signupForm .btn, .registerModalContainer .loginModal .signupForm .btn, .loginModalContainer .loginModal .loginForm .itemDisplay .itemDisplay_One .itemDisplay_textContainer button, .itemDisplay .itemDisplay_One .itemDisplay_textContainer .loginModalContainer .loginModal .loginForm button, .registerModalContainer .loginModal .loginForm .itemDisplay .itemDisplay_One .itemDisplay_textContainer button, .itemDisplay .itemDisplay_One .itemDisplay_textContainer .registerModalContainer .loginModal .loginForm button, .loginModalContainer .loginModal .signupForm .itemDisplay .itemDisplay_One .itemDisplay_textContainer button, .itemDisplay .itemDisplay_One .itemDisplay_textContainer .loginModalContainer .loginModal .signupForm button, .registerModalContainer .loginModal .signupForm .itemDisplay .itemDisplay_One .itemDisplay_textContainer button, .itemDisplay .itemDisplay_One .itemDisplay_textContainer .registerModalContainer .loginModal .signupForm button {
+  width: 130px;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: #7a87cc;
+  color: white;
+  border-color: #7a87cc;
+}
+
+.loginModalContainer .loginModal .loginForm .btn:hover, .registerModalContainer .loginModal .loginForm .btn:hover, .loginModalContainer .loginModal .signupForm .btn:hover, .registerModalContainer .loginModal .signupForm .btn:hover, .loginModalContainer .loginModal .loginForm .itemDisplay .itemDisplay_One .itemDisplay_textContainer button:hover, .itemDisplay .itemDisplay_One .itemDisplay_textContainer .loginModalContainer .loginModal .loginForm button:hover, .registerModalContainer .loginModal .loginForm .itemDisplay .itemDisplay_One .itemDisplay_textContainer button:hover, .itemDisplay .itemDisplay_One .itemDisplay_textContainer .registerModalContainer .loginModal .loginForm button:hover, .loginModalContainer .loginModal .signupForm .itemDisplay .itemDisplay_One .itemDisplay_textContainer button:hover, .itemDisplay .itemDisplay_One .itemDisplay_textContainer .loginModalContainer .loginModal .signupForm button:hover, .registerModalContainer .loginModal .signupForm .itemDisplay .itemDisplay_One .itemDisplay_textContainer button:hover, .itemDisplay .itemDisplay_One .itemDisplay_textContainer .registerModalContainer .loginModal .signupForm button:hover {
+  background-color: #fff;
+  color: #6876c5;
+  border-color: #7a87cc;
+}
+
+.loginModalContainer .loginModal .loginForm .btn-secondary, .registerModalContainer .loginModal .loginForm .btn-secondary, .loginModalContainer .loginModal .signupForm .btn-secondary, .registerModalContainer .loginModal .signupForm .btn-secondary {
+  background-color: #ffa726;
+  border-color: #ffa726;
+}
+
+.loginModalContainer .loginModal .loginForm .btn-secondary:hover, .registerModalContainer .loginModal .loginForm .btn-secondary:hover, .loginModalContainer .loginModal .signupForm .btn-secondary:hover, .registerModalContainer .loginModal .signupForm .btn-secondary:hover {
+  color: #ffa726;
+  border-color: #ffa726;
+}
+
+.loginModalContainer .loginModal .loginForm input, .registerModalContainer .loginModal .loginForm input, .loginModalContainer .loginModal .signupForm input, .registerModalContainer .loginModal .signupForm input {
+  width: 80%;
+  padding-left: 10%;
+  padding-right: 10%;
+  height: 30px;
+  border: none;
+  font-size: 20px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-bottom: 2px solid #d6daef;
+}
+
+.loginModalContainer .loginModal .loginForm input:focus, .registerModalContainer .loginModal .loginForm input:focus, .loginModalContainer .loginModal .signupForm input:focus, .registerModalContainer .loginModal .signupForm input:focus {
+  outline: 0;
+  border-bottom: 2px solid #7a87cc;
+}
+
+.loginModalContainer .loginModal .loginForm input:focus::after, .registerModalContainer .loginModal .loginForm input:focus::after, .loginModalContainer .loginModal .signupForm input:focus::after, .registerModalContainer .loginModal .signupForm input:focus::after {
+  width: 100%;
+}
+
+.loginModalContainer .loginModal .signupForm .loginLink, .registerModalContainer .loginModal .signupForm .loginLink {
+  color: #ffbea9;
+}
+
+.loginModalContainer .loginModal .signupForm .loginLink a, .registerModalContainer .loginModal .signupForm .loginLink a {
+  color: #e64a19;
+}
+
+.loginModalContainer .loginModal .signupForm p, .registerModalContainer .loginModal .signupForm p {
+  color: #ffbea9;
+}
+
+.loginModalContainer .loginModal .signupForm input, .registerModalContainer .loginModal .signupForm input {
+  border-color: #ffbea9;
+  margin-bottom: 20px;
+}
+
+.loginModalContainer .loginModal .signupForm input:focus, .registerModalContainer .loginModal .signupForm input:focus {
+  border-color: #e64a19;
+}
+
+.registerModalContainer {
+  background-image: -o-linear-gradient(-130deg, #ffe5bf, #ffb69f);
+  background-image: -moz-linear-gradient(-130deg, #ffe5bf, #ffb69f);
+  background-image: -webkit-linear-gradient(-130deg, #ffe5bf, #ffb69f);
+  background-image: linear-gradient(-130deg, #ffe5bf, #ffb69f);
+}
+
+.btn, .itemDisplay .itemDisplay_One .itemDisplay_textContainer button {
+  margin: 0 auto;
+  display: block;
+  border-radius: 0;
+  width: 150px;
+  height: 40px;
+  background-color: transparent;
+  color: white;
+  font-size: 17px;
+  border: 2px solid white;
+  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:hover, .itemDisplay .itemDisplay_One .itemDisplay_textContainer button:hover {
+  background-color: #fff;
+  color: #6876c5;
+  cursor: pointer;
+}
+
 body {
   margin: 0;
   padding: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .row {
@@ -136,7 +317,7 @@ body {
 }
 
 .nav a:hover {
-  color: #7a87cc;
+  text-decoration: underline;
 }
 
 .nav .logoContainer {
@@ -147,6 +328,7 @@ body {
 .nav .logoContainer h1 {
   margin: 0;
   font-size: 1.8rem;
+  font-family: 'Raleway', sans-serif;
 }
 
 .nav .loginContainer {
@@ -157,11 +339,11 @@ body {
 }
 
 .nav .loginContainer a:last-of-type {
-  color: #fffb00;
+  color: #e9ebf6;
 }
 
 .nav .loginContainer a:hover {
-  color: #7a87cc;
+  text-decoration: underline;
 }
 
 .searchContainer {
@@ -183,9 +365,14 @@ body {
   font-size: 20px;
   border-radius: 0;
   -webkit-appearance: none;
-  border: 1px solid #e2e2e2;
+  border: 2px solid #e2e2e2;
   color: #969696;
   transition: 0.3s;
+}
+
+.searchContainer .searchBar input:focus, .searchContainer .searchBar button:focus {
+  outline: none;
+  border-color: #7a87cc;
 }
 
 .searchContainer .searchBar input {
@@ -197,14 +384,15 @@ body {
 }
 
 .searchContainer .searchBar button:hover {
-  color: #349ef3;
-  border-color: #349ef3;
-  border-radius: 30%;
-}
-
-.searchContainer .searchBar:active button, .searchContainer .searchBar:focus button {
-  border-color: #64B5F6;
-  color: #64B5F6;
+  background-color: #7a87cc;
+  color: white;
+  border-radius: 100%;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-color: white;
+  border-left: 4px solid white;
+  border-right: 4px solid white;
+  margin-left: 1px;
 }
 
 .categoryPanelContainer {
@@ -230,6 +418,7 @@ body {
   color: #7c7c7c;
   margin-left: 0px;
   margin-right: 0px;
+  cursor: pointer;
 }
 
 .categoryPanelContainer .categoryPanel button:hover {
@@ -258,35 +447,20 @@ body {
 }
 
 .itemDisplay .itemDisplay_One .itemDisplay_textContainer button {
-  margin: 0 auto;
-  display: block;
-  border-radius: 0;
-  width: 150px;
-  height: 40px;
-  background-color: transparent;
-  color: white;
-  font-size: 17px;
-  border: 2px solid white;
-  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.itemDisplay .itemDisplay_One .itemDisplay_textContainer button:hover {
-  background-color: #fff;
-  color: #6876c5;
-  cursor: pointer;
+  margin-top: 0;
 }
 
 .itemDisplay .itemDisplay_One .itemDisplay_textContainer h2 {
   font-size: 50px;
   margin: 0;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .itemDisplay .itemDisplay_One .itemDisplay_textContainer h3 {
   font-size: 20px;
   margin: 0;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .itemDisplay .itemDisplay_One img {
@@ -338,18 +512,5 @@ body {
 
 .recentlyViewed .recentlyViewedItem_row .recentlyViewedItem:hover {
   border: 1px solid #e2e2e2;
-}
-
-.footer {
-  background-color: #e2e2e2;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  margin-top: 30px;
-}
-
-.footer h4 {
-  margin: 0 auto;
 }
 /*# sourceMappingURL=style.css.map */

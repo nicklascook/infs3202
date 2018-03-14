@@ -12,3 +12,11 @@ $ease-in: cubic-bezier(0.4, 0.0, 1, 1);
 $sharp-curve: cubic-bezier(0.4, 0.0, 0.6, 1);
 $ease-out: cubic-bezier(0.0, 0.0, 0.2, 1);
 $standard-curve: cubic-bezier(0.4, 0.0, 0.2, 1);
+
+// GRADIENT
+@mixin linear-gradient($args...) {
+ background-image: -o-linear-gradient($args); 
+ background-image: -moz-linear-gradient($args); 
+ background-image: -webkit-linear-gradient($args); 
+  background-image: linear-gradient($args); 
+}

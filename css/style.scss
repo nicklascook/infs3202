@@ -1,9 +1,12 @@
 @import "fonts";
 @import "mixins";
+@import "loginsignup";
+@import "components";
 
 body{
     margin: 0;
     padding: 0;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .row {
@@ -26,7 +29,7 @@ body{
             text-decoration: none;
         }
          a:hover{
-            color: $accentColor;
+             text-decoration: underline;
         }
         
     .logoContainer{
@@ -35,6 +38,7 @@ body{
         h1{
             margin: 0;
             font-size: 1.8rem;
+            font-family: 'Raleway', sans-serif;
         }
         
     }
@@ -45,10 +49,11 @@ body{
         font-size: 1.1rem;
         
         a:last-of-type{
-            color: rgb(255, 251, 0);
+            color: lighten($accentColor, 30%);
+
         }
         a:hover{
-            color: $accentColor;
+            text-decoration: underline;
         }
        
         
@@ -72,9 +77,14 @@ body{
             font-size: 20px;
             border-radius: 0;
             -webkit-appearance: none;
-            border: 1px solid $grey;
+            border: 2px solid $grey;
             color: darken($grey, 30%);
             transition: 0.3s;
+            &:focus{
+                outline:none;
+                border-color: $accentColor;
+                
+            }
         }
         input{
             width: 40vw;
@@ -83,17 +93,18 @@ body{
             color: darken($grey, 30%);;
         }
         button:hover{
-            color: $darkPrimaryColor;
-            border-color: $darkPrimaryColor;
-            border-radius: 30%;
+            background-color: $accentColor;
+            color: white;
+            border-radius: 100%;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-color: white;
+            border-left: 4px solid white;
+            border-right: 4px solid white;
+            margin-left: 1px;
         }
     }
-    .searchBar:active, .searchBar:focus{
-        button{
-            border-color: $primaryColor;
-            color: $primaryColor;
-        }
-    }
+   
 }
 
 .categoryPanelContainer{
@@ -117,6 +128,7 @@ body{
             color: darken($grey, 40%);
             margin-left: 0px;
             margin-right: 0px;
+            cursor: pointer;
         }
         button:hover{
             background-color: darken($grey, 10%);
@@ -142,32 +154,20 @@ body{
             padding-left: 50px;
             color: white;
             button{
-               margin:0 auto;
-               display:block;
-               border-radius: 0;
-               width: 150px;
-               height: 40px;
-               background-color: transparent;
-               color: white;
-               font-size: 17px;
-               border: 2px solid white;
-               transition: 0.2s $standard-curve;
+               @extend .btn;
+               margin-top: 0;
             }
-            button:hover{
-                background-color: #fff;
-                color: darken($secondaryColor, 15%);
-                cursor: pointer;
-            }
+            
             h2{
                 font-size: 50px;
                 margin: 0;
-                margin-top: 30px;
+                margin-top: 20px;
             }
             h3{
                 font-size: 20px;
                 margin: 0;
                 margin-top: 10px;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
             }
             
         }
@@ -217,16 +217,5 @@ body{
         .recentlyViewedItem:hover{
             border: 1px solid lighten($grey,0%);
         }
-    }
-}
-.footer{
-    background-color: $grey;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 1rem;
-    margin-top: 30px;
-    h4{
-        margin: 0 auto;
     }
 }
