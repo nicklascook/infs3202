@@ -16,3 +16,128 @@
     cursor: pointer;
 
 }
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.nav{
+    height: 60px;
+    line-height: 60px;
+    background-color: rgb(51, 122, 253);
+    color: white;
+        a{
+            color: white;
+            text-decoration: none;
+        }
+         a:hover{
+             text-decoration: underline;
+        }
+        
+    .logoContainer{
+        float: left;
+        margin-left: 5%;
+        h1{
+            margin: 0;
+            font-size: 1.8rem;
+            font-family: 'Raleway', sans-serif;
+        }
+        
+    }
+    .loginContainer{
+        float: right;
+        margin-right: 5%;
+        display: inline-block;
+        font-size: 1.1rem;
+        
+        a:last-of-type{
+            color: lighten($accentColor, 30%);
+
+        }
+        a:hover{
+            text-decoration: underline;
+        }   
+    }
+}
+
+.searchContainer{
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    .searchBar{
+        margin: auto;
+        height: 2vh;
+        transition: 0.5s;
+        input,button{
+            display: inline-block;
+            padding: 10px 15px;
+            font-size: 20px;
+            border-radius: 0;
+            -webkit-appearance: none;
+            border: 2px solid $grey;
+            color: darken($grey, 30%);
+            transition: 0.3s;
+            &:focus{
+                outline:none;
+                border-color: $accentColor;
+                
+            }
+        }
+        input{
+            width: 40vw;
+        }
+        input::placeholder{
+            color: darken($grey, 30%);;
+        }
+        button:hover{
+            background-color: $accentColor;
+            color: white;
+            border-radius: 100%;
+            padding-left: 12px;
+            padding-right: 12px;
+            border-color: white;
+            border-left: 4px solid white;
+            border-right: 4px solid white;
+            margin-left: 1px;
+            outline: none;
+        }
+    }
+   
+}
+
+.categoryPanelContainer{
+    width: 100%;
+    background-color: darken($grey, 5%);
+    margin: auto;
+    margin-top: 80px;  
+    height: auto;
+
+    
+    .categoryPanel{
+        margin: auto;
+        width: 90%;
+        button{
+            transition: 0.2s $standard-curve;
+            width: 12%;
+            border-radius: 0;
+            height: 40px;
+            border: 0;
+            background-color: darken($grey, 5%);
+            color: darken($grey, 40%);
+            margin-left: 0px;
+            margin-right: 0px;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: darken($grey, 10%);
+
+        }
+    }
+
+}

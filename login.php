@@ -16,20 +16,20 @@
     <div class="loginModalContainer">
         <div class="loginModal">
             <h1>
-                <a href="index.html">MarketHub
+                <a href="index.php">MarketHub
                     <span class="icon-shopping-cart"></span>
                 </a>
             </h1>
 
             <h2><span class="icon-user"></span> Welcome back</h2>
-            <form action="" class="loginForm">
+            <form action="loginHandle.php" method="POST" class="loginForm">
                 <p>Username:</p> 
-                <input type="text" placeholder="">
+                <input type="text" name="username" placeholder="">
                 <p>Password:</p> 
-                <input type="password" placeholder="">
-                <button class="btn">Login <span class="icon-arrow-right"></span></button>
+                <input type="password" name="password" placeholder="">
+                <button type="submit" class="btn">Login <span class="icon-arrow-right"></span></button>
 
-                <p class="registerLink">Not a user? <a href="signup.html">Sign Up</a></p>
+                <p class="registerLink">Not a user? <a href="signup.php">Sign Up</a></p>
             </form>
 
         </div>

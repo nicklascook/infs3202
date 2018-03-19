@@ -194,6 +194,11 @@
   margin-left: 10px;
 }
 
+.loginModalContainer .loginModal .loginForm p .registerLink_error, .registerModalContainer .loginModal .loginForm p .registerLink_error, .loginModalContainer .loginModal .signupForm p .registerLink_error, .registerModalContainer .loginModal .signupForm p .registerLink_error {
+  color: red !important;
+  font-size: 20px;
+}
+
 .loginModalContainer .loginModal .loginForm .btn, .registerModalContainer .loginModal .loginForm .btn, .loginModalContainer .loginModal .signupForm .btn, .registerModalContainer .loginModal .signupForm .btn, .loginModalContainer .loginModal .loginForm .itemDisplay .itemDisplay_One .itemDisplay_textContainer button, .itemDisplay .itemDisplay_One .itemDisplay_textContainer .loginModalContainer .loginModal .loginForm button, .registerModalContainer .loginModal .loginForm .itemDisplay .itemDisplay_One .itemDisplay_textContainer button, .itemDisplay .itemDisplay_One .itemDisplay_textContainer .registerModalContainer .loginModal .loginForm button, .loginModalContainer .loginModal .signupForm .itemDisplay .itemDisplay_One .itemDisplay_textContainer button, .itemDisplay .itemDisplay_One .itemDisplay_textContainer .loginModalContainer .loginModal .signupForm button, .registerModalContainer .loginModal .signupForm .itemDisplay .itemDisplay_One .itemDisplay_textContainer button, .itemDisplay .itemDisplay_One .itemDisplay_textContainer .registerModalContainer .loginModal .signupForm button {
   width: 130px;
   margin: 0 auto;
@@ -286,12 +291,6 @@
   background-color: #fff;
   color: #6876c5;
   cursor: pointer;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Open Sans', sans-serif;
 }
 
 .row {
@@ -393,6 +392,7 @@ body {
   border-left: 4px solid white;
   border-right: 4px solid white;
   margin-left: 1px;
+  outline: none;
 }
 
 .categoryPanelContainer {
@@ -423,6 +423,201 @@ body {
 
 .categoryPanelContainer .categoryPanel button:hover {
   background-color: #c9c9c9;
+}
+
+.searchContainer {
+  width: 100%;
+}
+
+.searchContainer .categoryColumn {
+  width: 20%;
+  margin-top: 30px;
+  height: 1000px;
+  float: left;
+}
+
+.searchContainer .categoryColumn .btn, .searchContainer .categoryColumn .itemDisplay .itemDisplay_One .itemDisplay_textContainer button, .itemDisplay .itemDisplay_One .itemDisplay_textContainer .searchContainer .categoryColumn button {
+  background-color: #64B5F6;
+  color: white;
+  border-color: #64B5F6;
+  margin-top: 30px;
+}
+
+.searchContainer .categoryColumn .btn:hover, .searchContainer .categoryColumn .itemDisplay .itemDisplay_One .itemDisplay_textContainer button:hover, .itemDisplay .itemDisplay_One .itemDisplay_textContainer .searchContainer .categoryColumn button:hover {
+  background-color: white;
+  color: #64B5F6;
+}
+
+.searchContainer .categoryColumn hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.searchContainer .categoryColumn h2 {
+  text-align: center;
+  background-color: #64B5F6;
+  margin-top: 0;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  color: white;
+  font-weight: 100;
+}
+
+.searchContainer .categoryColumn .categoryPicker p {
+  margin-left: 40px;
+}
+
+.searchContainer .categoryColumn .categoryPicker li {
+  list-style: none;
+}
+
+.searchContainer .categoryColumn .categoryPicker a {
+  text-decoration: none;
+  color: #64B5F6;
+}
+
+.searchContainer .categoryColumn .categoryPicker a:hover {
+  text-decoration: underline;
+}
+
+.searchContainer .categoryColumn .filter {
+  margin-left: 40px;
+  width: 100%;
+  /* Create a custom checkbox */
+  /* On mouse-over, add a grey background color */
+  /* When the checkbox is checked, add a blue background */
+  /* Create the checkmark/indicator (hidden when not checked) */
+  /* Show the checkmark when checked */
+  /* Style the checkmark/indicator */
+}
+
+.searchContainer .categoryColumn .filter .container {
+  display: block;
+  position: relative;
+  margin-bottom: 12px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.searchContainer .categoryColumn .filter .container p {
+  margin-left: 30px;
+}
+
+.searchContainer .categoryColumn .filter .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.searchContainer .categoryColumn .filter .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #e2e2e2;
+  border-radius: 100%;
+}
+
+.searchContainer .categoryColumn .filter .container input:checked ~ .checkmark {
+  background-color: #64B5F6;
+}
+
+.searchContainer .categoryColumn .filter .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.searchContainer .categoryColumn .filter .container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.searchContainer .categoryColumn .filter .container .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.searchContainer .categoryColumn .price input {
+  width: 40px;
+  height: 25px;
+  font-size: 15px;
+  border: 1px solid #e2e2e2;
+}
+
+.searchContainer .categoryColumn .price input:focus {
+  outline: none;
+  border-color: #64B5F6;
+}
+
+.searchContainer .itemColumn {
+  width: 80%;
+  margin-top: 30px;
+  height: 1000px;
+  float: left;
+  background-color: #fcfcfc;
+}
+
+.searchContainer .itemColumn .sort {
+  margin-left: 50px;
+}
+
+.searchContainer .itemColumn .sort p {
+  display: inline-block;
+}
+
+.searchContainer .itemColumn .sort .btn, .searchContainer .itemColumn .sort .itemDisplay .itemDisplay_One .itemDisplay_textContainer button, .itemDisplay .itemDisplay_One .itemDisplay_textContainer .searchContainer .itemColumn .sort button {
+  background-color: #e2e2e2;
+  display: inline-block;
+  color: #969696;
+  border-color: #969696;
+  height: 30px;
+}
+
+.searchContainer .itemColumn .item {
+  width: 100%;
+  float: left;
+  border: 1px solid #e2e2e2;
+}
+
+.searchContainer .itemColumn .item .itemInfo {
+  width: 79%;
+  display: block;
+  float: left;
+}
+
+.searchContainer .itemColumn .item .itemInfo a {
+  color: blue;
+  text-decoration: none;
+  padding-left: 50px;
+}
+
+.searchContainer .itemColumn .item .itemInfo a:hover {
+  text-decoration: underline;
+}
+
+.searchContainer .itemColumn .item .itemImg {
+  width: 20%;
+  max-height: 220px;
+  float: left;
+  border: 1px solid #e2e2e2;
+  display: block;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .itemDisplay {

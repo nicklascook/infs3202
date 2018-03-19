@@ -1,3 +1,9 @@
+<?php
+require "db.php";
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,15 +20,23 @@
     <!-- Top Navigation Header -->
     <nav class="nav">
         <div class="logoContainer">
-           <a href="index.html"> <h1>MarketHub<span class="icon-shopping-cart"></span></h1></a>
+           <a href="index.php"> <h1>MarketHub<span class="icon-shopping-cart"></span></h1></a>
       
 
         </div>
         <div class="loginContainer">
-            <span class="icon-user"></span>
-            <a href="signup.html" >Sign Up</a>
-            /
-            <a href="login.html" >Login</a>
+            <?php
+                if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] = true){
+                    $username = $_SESSION['username'];
+                    echo "<a href='account.php'><span class='icon-user'></span> $username </a>";
+                } else{
+                    echo "<a href='signup.php' >Sign Up</a>
+                    /
+                    <a href='login.php' >Login</a>";
+
+                }
+            ?>
+            
         </div>
     </nav>
 
@@ -35,14 +49,14 @@
     </div>
     <div class="categoryPanelContainer row">
         <div class="categoryPanel">
-            <button class="categoryButton">Category</button>
-            <button class="categoryButton">Category</button>
-            <button class="categoryButton">Category</button>
-            <button class="categoryButton">Category</button>
-            <button class="categoryButton">Category</button>
-            <button class="categoryButton">Category</button>
-            <button class="categoryButton">Category</button>
-            <button class="categoryButton">Category</button>
+            <button class="categoryButton">Fashion</button>
+            <button class="categoryButton">Motors</button>
+            <button class="categoryButton">Garden</button>
+            <button class="categoryButton">Home</button>
+            <button class="categoryButton">Electronics</button>
+            <button class="categoryButton">Toys</button>
+            <button class="categoryButton">Health</button>
+            <button class="categoryButton">Collectables</button>
         </div>
     </div>
 
