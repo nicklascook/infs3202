@@ -1,5 +1,4 @@
 <?php
-require "db.php";
 session_start();
 
 ?>
@@ -26,9 +25,8 @@ session_start();
         </div>
         <div class="loginContainer">
             <?php
-                if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] = true){
-                    $username = $_SESSION['username'];
-                    echo "<a href='account.php'><span class='icon-user'></span> $username </a>";
+                if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']){
+                    echo "<a href='account.php'><span class='icon-user'></span>".$_SESSION['username'] . "</a>";
                 } else{
                     echo "<a href='signup.php' >Sign Up</a>
                     /

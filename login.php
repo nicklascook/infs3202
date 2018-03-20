@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +32,16 @@
                 <input type="password" name="password" placeholder="">
                 <button type="submit" class="btn">Login <span class="icon-arrow-right"></span></button>
 
-                <p class="registerLink">Not a user? <a href="signup.php">Sign Up</a></p>
+
+                <?php
+                    if (isset($_SESSION['message'])){
+                        echo "<p class='registerLink' style='color:red;'>". $_SESSION["message"] ."<a href='login.php'> Sign Up</a></p>";
+                        unset($_SESSION['message']);
+                    } else{
+                        echo "<p class='registerLink'>Not a user? <a href='login.php'>Sign Up</a></p>";
+                    }
+                    
+                ?>
             </form>
 
         </div>

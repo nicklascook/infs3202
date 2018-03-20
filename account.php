@@ -1,9 +1,9 @@
 <?php
     session_start();
-    if($_SESSION['loggedIn'] = false){
+    if(isset($_SESSION['loggedIn']) == false || $_SESSION['loggedIn'] == false){
         header("Location: login.php");
-    }
-    echo $_SESSION['loggedIn'];
+    } 
+
  
 ?>
 
@@ -30,7 +30,7 @@
         <div class="loginContainer">
             <?php
                 $username = $_SESSION['username'];
-                echo "<a href='account.php'><span class='icon-user'></span> $username </a>";
+                echo "<a href='account.php'><span class='icon-user'></span>".$_SESSION['username'] . "</a>";
 
             ?>
 
