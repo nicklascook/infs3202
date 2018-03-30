@@ -29,7 +29,7 @@
 .nav{
     height: 60px;
     line-height: 60px;
-    background-color: rgb(51, 122, 253);
+    background-color: $primaryColor;
     color: white;
         a{
             color: white;
@@ -54,14 +54,56 @@
         margin-right: 5%;
         display: inline-block;
         font-size: 1.1rem;
-        
-        a:last-of-type{
-            color: lighten($accentColor, 30%);
-
+        position: relative;
+        span{
+            cursor: pointer;
+            .accountArrow{
+                transition: 0.2s $standard-curve;
+            }
+            &:hover{
+                text-decoration: underline;
+                color: white;
+                .accountArrow{
+                    color: lighten($accentColor, 20%);
+                 }
+            }
         }
+        
         a:hover{
             text-decoration: underline;
+            
         }   
+        .accountDropdown{
+            display: inline-block;
+            position: absolute;
+            display: none;
+            background-color: lighten($grey, 10%);
+            padding-left: 45px;
+            border: 1px solid lighten($primaryColor,20%);
+            border-top: none;
+            padding-right: 45px;
+            margin-left: -15px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            text-align: center;
+            
+            a{
+                color: lighten($accentColor, 5%);;
+                width: 100%;
+                // padding-left: 10px;
+                padding-right: 10px;
+                display: inline-block;
+            }
+            hr{
+                width: 100%;
+                padding-left: 87px;
+                margin-left: -45px;
+                outline: none;
+                border: 1px solid lighten($primaryColor,20%);
+                margin-bottom: 0;
+                margin-top: 0;
+            }
+}
     }
 }
 

@@ -1,8 +1,13 @@
 <?php
     session_start();
-    if(isset($_SESSION['loggedIn']) == false || $_SESSION['loggedIn'] == false){
+
+
+    if(isset($_SESSION['loggedIn']) != 1 || $_SESSION['loggedIn'] === 0){
         header("Location: login.php");
-    } 
+    } elseif($_SESSION['activated'] == 0){
+        header("Location: activation.php");
+    }
+    
 
  
 ?>
@@ -29,7 +34,6 @@
         </div>
         <div class="loginContainer">
             <?php
-                $username = $_SESSION['username'];
                 echo "<a href='account.php'><span class='icon-user'></span>".$_SESSION['username'] . "</a>";
 
             ?>

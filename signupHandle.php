@@ -35,16 +35,17 @@
         if ($mysqli->query($sqlEntry)){
             $_SESSION["activated"] = 0;
             $_SESSION["loggedIn"] = true;
-            $_SESSION["message"] = "A confirmation link has been sent to your $email. Please confirm your account by clicking on the link included!";
+            $_SESSION['hash'] = $hash;
 
-            // Send verification email TODO later because of testing.
+            header("Location: activation.php?sendVerify=true");
+
+
 
         } else{
             $_SESSION['message'] = 'Something went wrong with the signup! Please try again!';
             header("location: signup.php");
         }
-        // return to main page
-        header("Location: index.php");
+       
     }
 
 ?>

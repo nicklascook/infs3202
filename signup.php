@@ -1,7 +1,9 @@
 <?php
-    require "db.php";
     session_start();
-
+    require "db.php";
+    if(isset($_SESSION['loggedIn']) == true && $_SESSION['loggedIn'] == true){
+        header("Location: account.php");
+    } 
 ?>
 
 <!DOCTYPE html>

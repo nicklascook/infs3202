@@ -26,12 +26,19 @@ session_start();
         <div class="loginContainer">
             <?php
                 if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']){
-                    echo "<a href='account.php'><span class='icon-user'></span>".$_SESSION['username'] . "</a>";
+                    echo "<span class='accountName'><span class='icon-user'></span> ".$_SESSION['username']." <span class='accountArrow icon-chevron-down'></span></span>";
+                    echo "<div class='accountDropdown'>
+                        <a href='account.php'>Account</a>
+                        <hr>
+                        <a href='sell.php'>Sell</a>
+                        <hr>
+                        <a href='logoutHandle.php'>Sign out</a>
+
+                    </div>";
                 } else{
                     echo "<a href='signup.php' >Sign Up</a>
                     /
                     <a href='login.php' >Login</a>";
-
                 }
             ?>
             
@@ -40,8 +47,10 @@ session_start();
 
     <div class="searchContainer row">
         <div class="searchBar">
-            <input type="text" name="" id="" placeholder="Search">
-            <button><span class="icon-search"></span></button>
+            <form action="search.php" method="GET">
+                <input type="text" name="name" id="" placeholder="Search">
+                <button type="submit"><span class="icon-search"></span></button>
+            </form>
         </div>
 
     </div>
@@ -58,14 +67,14 @@ session_start();
         </div>
     </div>
 
-    <div class="itemDisplay itemDisplay_One">
-        <div class="itemDisplay_One">
+    <div class="itemDisplay itemDisplay_One" id="itemDisplay">
+        <div class="itemDisplay_One" >
             <div class="itemDisplay_textContainer">
-                <h2>Everything Under $20</h2>
-                <h3>Browse everything from gifts to fashion, nothing is over $20!</h3>
+                <h2></h2>
+                <h3></h3>
                 <button>Explore</button>
             </div>
-            <img src="img/itemDisplayOne_under20.png" alt="">
+            <img src="" alt="">
 
         </div>
     </div>
@@ -88,6 +97,6 @@ session_start();
 
 
 </body>
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/script.js"></script>
 </html>

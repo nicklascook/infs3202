@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    require("db.php");
+?>
 <!DOCTYPE html>
 <html>
 
@@ -25,10 +29,15 @@
 
         </div>
         <div class="loginContainer">
-            <span class="icon-user"></span>
-            <a href="signup.php">Sign Up</a>
-            /
-            <a href="login.php">Login</a>
+            <?php
+                if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']){
+                    echo "<a href='account.php'><span class='icon-user'></span>".$_SESSION['username'] . "</a>";
+                } else{
+                    echo "<a href='signup.php' >Sign Up</a>
+                    /
+                    <a href='login.php' >Login</a>";
+                }
+            ?>
         </div>
     </nav>
 
@@ -120,7 +129,7 @@
                 <p>Sort by:</p>
                 <button class="btn">Best Match</button>
             </div>
-            <div class="item">
+            <!-- <div class="item">
                 <img class="itemImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTs0tBB-7eKFOdvaepZJIWHyHFplhg3gahwzk-1ZbC04Qa3btnE" alt="">
                 <div class="itemInfo">
                     <a href="#"><h3 class="itemTitle">Amazing Men's Tshirt Multiple Colours</h3></a>
@@ -129,7 +138,20 @@
                     <h5 class="itemPostage">Free Postage</h5>
                 </div>
 
-            </div>
+            </div> -->
+
+            <?php
+                $name = $_GET['name'];
+                $result = mysqli_query($mysqli, "SELECT * FROM items WHERE name='$name'");
+                if($result->num_rows == 0){
+                    echo "aint none here";
+                } else{
+                    $result = $result->fetch_assoc();
+                    echo $result['name'];
+                    echo $result['description'];
+                }
+
+            ?>
         </div>
     </div>
 

@@ -111,16 +111,28 @@
   content: "\e916";
 }
 
+.icon-chevron-down:before {
+  content: "\e917";
+}
+
+.icon-chevron-up:before {
+  content: "\e918";
+}
+
+.icon-auction:before {
+  content: "\e919";
+}
+
 .loginModalContainer, .registerModalContainer {
   position: absolute;
   height: 100vh;
   overflow: hidden;
   width: 100vw;
   margin: 0;
-  background-image: -o-linear-gradient(45deg, #c4e3fc, #b1b9e1);
-  background-image: -moz-linear-gradient(45deg, #c4e3fc, #b1b9e1);
-  background-image: -webkit-linear-gradient(45deg, #c4e3fc, #b1b9e1);
-  background-image: linear-gradient(45deg, #c4e3fc, #b1b9e1);
+  background-image: -o-linear-gradient(45deg, #badbf6, #b1b9e1);
+  background-image: -moz-linear-gradient(45deg, #badbf6, #b1b9e1);
+  background-image: -webkit-linear-gradient(45deg, #badbf6, #b1b9e1);
+  background-image: linear-gradient(45deg, #badbf6, #b1b9e1);
 }
 
 .loginModalContainer .loginModal, .registerModalContainer .loginModal {
@@ -143,7 +155,7 @@
 }
 
 .loginModalContainer .loginModal h1, .registerModalContainer .loginModal h1 {
-  background-color: #64B5F6;
+  background-color: #5faceb;
   width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -161,10 +173,10 @@
 }
 
 .loginModalContainer .loginModal h2, .registerModalContainer .loginModal h2 {
-  background-image: -o-linear-gradient(140deg, #64B5F6, #084e86);
-  background-image: -moz-linear-gradient(140deg, #64B5F6, #084e86);
-  background-image: -webkit-linear-gradient(140deg, #64B5F6, #084e86);
-  background-image: linear-gradient(140deg, #64B5F6, #084e86);
+  background-image: -o-linear-gradient(140deg, #5faceb, #0e4470);
+  background-image: -moz-linear-gradient(140deg, #5faceb, #0e4470);
+  background-image: -webkit-linear-gradient(140deg, #5faceb, #0e4470);
+  background-image: linear-gradient(140deg, #5faceb, #0e4470);
   width: auto;
   max-width: 60%;
   margin: 0 auto;
@@ -274,6 +286,36 @@
   background-image: linear-gradient(-130deg, #ffe5bf, #ffb69f);
 }
 
+.activationText {
+  color: #7a87cc;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  margin-top: 100px;
+  font-size: 20px;
+  border: 3px solid #7a87cc;
+  padding: 20px;
+  line-height: 40px;
+}
+
+.activationText a {
+  text-decoration: none;
+}
+
+.activationText span {
+  color: #197bcb;
+}
+
+.activationText .btn-resend {
+  background-color: #5faceb;
+  border-color: #5faceb;
+  margin-top: 20px;
+}
+
+.activationText .btn-resend:hover {
+  color: #3294e5;
+}
+
 .btn, .itemDisplay .itemDisplay_One .itemDisplay_textContainer button {
   margin: 0 auto;
   display: block;
@@ -306,7 +348,7 @@
 .nav {
   height: 60px;
   line-height: 60px;
-  background-color: #337afd;
+  background-color: #5faceb;
   color: white;
 }
 
@@ -335,14 +377,60 @@
   margin-right: 5%;
   display: inline-block;
   font-size: 1.1rem;
+  position: relative;
 }
 
-.nav .loginContainer a:last-of-type {
-  color: #e9ebf6;
+.nav .loginContainer span {
+  cursor: pointer;
+}
+
+.nav .loginContainer span .accountArrow {
+  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav .loginContainer span:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.nav .loginContainer span:hover .accountArrow {
+  color: #c4c9e8;
 }
 
 .nav .loginContainer a:hover {
   text-decoration: underline;
+}
+
+.nav .loginContainer .accountDropdown {
+  display: inline-block;
+  position: absolute;
+  display: none;
+  background-color: #fcfcfc;
+  padding-left: 45px;
+  border: 1px solid #badbf6;
+  border-top: none;
+  padding-right: 45px;
+  margin-left: -15px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  text-align: center;
+}
+
+.nav .loginContainer .accountDropdown a {
+  color: #8d97d3;
+  width: 100%;
+  padding-right: 10px;
+  display: inline-block;
+}
+
+.nav .loginContainer .accountDropdown hr {
+  width: 100%;
+  padding-left: 87px;
+  margin-left: -45px;
+  outline: none;
+  border: 1px solid #badbf6;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 .searchContainer {
@@ -437,15 +525,15 @@
 }
 
 .searchContainer .categoryColumn .btn, .searchContainer .categoryColumn .itemDisplay .itemDisplay_One .itemDisplay_textContainer button, .itemDisplay .itemDisplay_One .itemDisplay_textContainer .searchContainer .categoryColumn button {
-  background-color: #64B5F6;
+  background-color: #5faceb;
   color: white;
-  border-color: #64B5F6;
+  border-color: #5faceb;
   margin-top: 30px;
 }
 
 .searchContainer .categoryColumn .btn:hover, .searchContainer .categoryColumn .itemDisplay .itemDisplay_One .itemDisplay_textContainer button:hover, .itemDisplay .itemDisplay_One .itemDisplay_textContainer .searchContainer .categoryColumn button:hover {
   background-color: white;
-  color: #64B5F6;
+  color: #5faceb;
 }
 
 .searchContainer .categoryColumn hr {
@@ -455,7 +543,7 @@
 
 .searchContainer .categoryColumn h2 {
   text-align: center;
-  background-color: #64B5F6;
+  background-color: #5faceb;
   margin-top: 0;
   padding-bottom: 15px;
   padding-top: 15px;
@@ -473,7 +561,7 @@
 
 .searchContainer .categoryColumn .categoryPicker a {
   text-decoration: none;
-  color: #64B5F6;
+  color: #5faceb;
 }
 
 .searchContainer .categoryColumn .categoryPicker a:hover {
@@ -523,7 +611,7 @@
 }
 
 .searchContainer .categoryColumn .filter .container input:checked ~ .checkmark {
-  background-color: #64B5F6;
+  background-color: #5faceb;
 }
 
 .searchContainer .categoryColumn .filter .checkmark:after {
@@ -557,7 +645,7 @@
 
 .searchContainer .categoryColumn .price input:focus {
   outline: none;
-  border-color: #64B5F6;
+  border-color: #5faceb;
 }
 
 .searchContainer .itemColumn {
@@ -614,6 +702,325 @@
   display: block;
 }
 
+body.sellItemBody {
+  background-color: #efefef;
+}
+
+.sellInputBlock {
+  width: 60%;
+  background-color: #fff;
+  margin: 0 auto;
+  display: block;
+  margin-top: 50px;
+  border-radius: 10px;
+}
+
+.sellInputBlock:first-of-type {
+  margin-top: 50px;
+}
+
+.sellInputBlock .sellInputContent {
+  padding-top: 10px;
+  padding-left: 40px;
+  text-align: center;
+}
+
+.sellInputBlock .sellInputContent h2, .sellInputBlock .sellInputContent h3, .sellInputBlock .sellInputContent p, .sellInputBlock .sellInputContent span {
+  text-align: left;
+}
+
+.sellInputBlock .sellInputContent h3 {
+  font-size: 15px;
+  margin-bottom: 25px;
+  color: #7c7c7c;
+}
+
+.sellInputBlock .sellInputContent hr {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  width: 100%;
+  margin-left: -40px;
+  padding-right: 39px;
+  border-color: white;
+}
+
+.sellInputBlock .sellInputContent #itemNameInput {
+  width: 92%;
+  margin-left: -40px;
+  height: 35px;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid #e2e2e2;
+  font-size: 16px;
+  padding-left: 15px;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sellInputBlock .sellInputContent #itemNameInput::placeholder {
+  color: #d5d5d5;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sellInputBlock .sellInputContent #itemNameInput:focus {
+  border-color: #7a87cc;
+}
+
+.sellInputBlock .sellInputContent #itemNameInput:focus::placeholder {
+  color: #b1b9e1;
+}
+
+.nameInputIndicator {
+  width: 100%;
+  display: inline-block;
+  text-align: left;
+  padding-left: 5px;
+  margin-top: 20px;
+}
+
+.nameInputIndicator .bar {
+  width: 40px;
+  display: inline-block;
+  background-color: #ffccbc;
+  height: 10px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.nameInputIndicator .barFill {
+  width: 10px;
+  background-color: #f4511e;
+  height: 10px;
+  position: absolute;
+  border-radius: 5px;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nameInputIndicator p {
+  display: inline;
+  padding-left: 10px;
+}
+
+.nameInputIndicator .nameInputIndicatorDetail {
+  color: #c9c9c9;
+}
+
+.detailsSection .detailsSelectWrap {
+  width: 40%;
+  margin: auto;
+  text-align: left;
+  position: relative;
+}
+
+.detailsSection .detailsSelectWrap p {
+  display: inline-block;
+  text-align: left;
+}
+
+.detailsSection select {
+  -webkit-appearance: button;
+  -webkit-border-radius: 2px;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-padding-end: 20px;
+  -webkit-padding-start: 2px;
+  -webkit-user-select: none;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' style='fill: grey;' width='30px' height='20px'><polyline points='18,5 9,15 0,5'/></svg>");
+  background-position: 97% center;
+  background-repeat: no-repeat;
+  border: 1px solid #AAA;
+  position: absolute;
+  right: 0;
+  color: #555;
+  font-size: inherit;
+  margin: 20px;
+  overflow: hidden;
+  padding: 5px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 20px;
+  width: 120px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.detailsSection select:focus {
+  outline: none;
+}
+
+.detailsSection select:hover {
+  border-color: #7a87cc;
+}
+
+.detailsSection input[type=text] {
+  height: 25px;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid #e2e2e2;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  font-size: 14px;
+  margin-top: 10px;
+  width: 110px;
+  padding-left: 5px;
+}
+
+.detailsSection input[type=text]::placeholder {
+  padding-left: 5px;
+  color: #e2e2e2;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.detailsSection input[type=text]:hover {
+  border-color: #b1b9e1;
+}
+
+.detailsSection input[type=text]:hover::placeholder {
+  color: #b1b9e1;
+}
+
+.detailsSection input[type=text]:focus {
+  border-color: #7a87cc;
+}
+
+.detailsSection input[type=text]:focus::placeholder {
+  color: #7a87cc;
+}
+
+.detailsSection .descriptionLabel {
+  margin-left: 15%;
+}
+
+.detailsSection .descriptionLabel:nth-of-type(2) {
+  color: #afafaf;
+}
+
+.detailsSection textarea {
+  width: 70%;
+  resize: none;
+  height: 150px;
+  border: 2px solid #e2e2e2;
+  border-radius: 5px;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 50px;
+}
+
+.detailsSection textarea:hover {
+  border-color: #b1b9e1;
+}
+
+.detailsSection textarea:focus {
+  border-color: #7a87cc;
+  outline: 0;
+}
+
+.pricingBlockContainer {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 50px;
+  margin-top: 40px;
+}
+
+.pricingBlockContainer .pricingBlock {
+  width: 40%;
+  border: 2px solid #e2e2e2;
+  margin-left: -40px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
+}
+
+.pricingBlockContainer .pricingBlock h3 {
+  color: black;
+  font-size: 18px;
+}
+
+.pricingBlockContainer .pricingBlock:hover {
+  border-color: #b1b9e1;
+}
+
+.pricingBlockContainer .pricingBlock input[type=radio] {
+  display: inline-block;
+}
+
+.pricingBlockContainer .pricingBlock input[type=number] {
+  display: inline-block;
+  width: 50%;
+  height: 35px;
+  border: 2px solid #e2e2e2;
+  border-radius: 5px;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 16px;
+  padding-left: 5px;
+}
+
+.pricingBlockContainer .pricingBlock input[type=number]:hover {
+  border-color: #b1b9e1;
+}
+
+.pricingBlockContainer .pricingBlock input[type=number]:focus {
+  border-color: #7a87cc;
+  outline: 0;
+}
+
+.pricingBlockContainer .pricingBlock .icon-dollar-sign {
+  border: 2px solid white;
+  color: white;
+  background-color: #b1b9e1;
+  border-radius: 100%;
+  padding: 3px;
+  margin-left: 20px;
+}
+
+.pricingBlockContainer .pricingBlock label {
+  margin-right: 15px;
+}
+
+.pricingBlockContainer .pricingBlock span {
+  display: inline-block;
+}
+
+.pricingBlockContainer .pricingBlock h3 {
+  display: inline-block;
+}
+
+.pricingBlockContainer .pricingBlock-active {
+  border-color: #7a87cc;
+}
+
+.pricingBlockContainer .pricingBlock-active .icon-dollar-sign {
+  border: 2px solid white;
+  color: white;
+  background-color: #5565be;
+}
+
+.pricingBlockContainer .pricingBlock-active input[type=number] {
+  border-color: #5565be;
+}
+
+.pricingBlockContainer .pricingBlock-active input[type=number]::placeholder {
+  color: #9fa8da;
+}
+
+.pricingBlockContainer .pricingBlock-active:hover {
+  border-color: #5565be;
+}
+
+.submitSellBtn {
+  color: #5faceb;
+  border-color: #5faceb;
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -623,7 +1030,7 @@ body {
 .itemDisplay {
   margin: auto;
   width: 100%;
-  background-color: #7a87cc;
+  background-color: #fff;
 }
 
 .itemDisplay .itemDisplay_One {
@@ -643,6 +1050,9 @@ body {
 
 .itemDisplay .itemDisplay_One .itemDisplay_textContainer button {
   margin-top: 0;
+  position: relative;
+  display: block;
+  bottom: 10px;
 }
 
 .itemDisplay .itemDisplay_One .itemDisplay_textContainer h2 {

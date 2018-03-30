@@ -141,12 +141,43 @@
                 }
             }
             
+
         }
         
     }
 
 }
 .registerModalContainer{
-            @extend .loginModalContainer;
-            @include linear-gradient(-130deg, lighten(#ffa726, 30%), lighten(#ff7043,18%));
-        }
+    @extend .loginModalContainer;
+    @include linear-gradient(-130deg, lighten(#ffa726, 30%), lighten(#ff7043,18%));
+}
+
+
+.activationText{
+    color: $accentColor;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    margin-top: 100px;
+    font-size: 20px;
+    border: 3px solid $accentColor;
+    padding: 20px;
+    line-height: 40px;
+    a{
+        text-decoration: none;
+    }
+
+    span{
+        color: darken($primaryColor, 20%);
+    }
+
+.btn-resend{
+    background-color: $primaryColor;
+    border-color: $primaryColor;
+    margin-top: 20px;
+    &:hover{
+        color: darken($primaryColor, 10%);
+    }
+    
+}
+}

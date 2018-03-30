@@ -1,0 +1,9 @@
+{
+    "period": 1,
+    "watch": {
+        "web/css/": "*.css",
+        "web/php/": "*.php",
+        "web/js/": "*.js",
+        "web/img/": "\\.png|gif|jpg$"
+    }
+}

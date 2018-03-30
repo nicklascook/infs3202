@@ -3,11 +3,13 @@
 @import "loginsignup";
 @import "components";
 @import "search";
+@import "sell";
 
 body{
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', sans-serif;
+    
 }
 
 
@@ -15,7 +17,7 @@ body{
 .itemDisplay{
     margin: auto;
     width: 100%;
-    background-color: $accentColor;
+    background-color: #fff;
     .itemDisplay_One{
         width: 70%;
         margin: auto;
@@ -30,6 +32,9 @@ body{
             button{
                @extend .btn;
                margin-top: 0;
+               position: relative;
+               display: block;
+               bottom: 10px;
             }
             
             h2{
@@ -93,3 +98,4 @@ body{
         }
     }
 }
+
