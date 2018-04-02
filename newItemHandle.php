@@ -4,32 +4,36 @@
 
 
 
-    $name = $_POST['name'];
-    $condition = $_POST['condition'];
-    $postagetype = $_POST['postagetype'];
-    $brand = $_POST['brand'];
-    $description = $_POST['description'];
-    $pricetype = $_POST['pricetype'];
+    // $name = $_POST['name'];
+    // $condition = $_POST['condition'];
+    // $postagetype = $_POST['postagetype'];
+    // $brand = $_POST['brand'];
+    // $description = $_POST['description'];
+    // $pricetype = $_POST['pricetype'];
 
-    if($pricetype === "bid"){
-        $price = $_POST['bidprice'];
-    } else{
-        $price = $_POST['buyprice'];
-    }
+    // if($pricetype === "bid"){
+    //     $price = $_POST['bidprice'];
+    // } else{
+    //     $price = $_POST['buyprice'];
+    // }
 
+
+    $images = $_FILES['image']["name"];
+    // echo $images;
+    photoUpload($images);
 
 
     function photoUpload(){
         
-            if($_FILES['photo']['name']){ // if file is uploaded:
+            if($_FILES['image']['name']){ // if file is uploaded:
                 //if no errors:
-                if(!$_FILES['photo']['error']){
+                if(!$_FILES['image']['error']){
     
-                    $fileName = strtolower($_FILES['photo']['name']); //rename file, lower case
+                    $fileName = strtolower($_FILES['image']['name']); //rename file, lower case
     
     
-                    if($_FILES['photo']['size'] > (2048000)){ // check that file is 2mb max
-                        echo "uh oh";
+                    if($_FILES['image']['size'] > (2048000)){ // check that file is 2mb max
+                        echo "error:filesize";
                     } else{ 
                         
                         $extension = "." . pathinfo($fileName, PATHINFO_EXTENSION); // Get the extension of the file
@@ -46,9 +50,10 @@
     
                         if($extension === ".png" || $extension === ".gif" || $extension === ".jpg" || $extension === ".jpeg"){ // check that it is an image
                             
-                            move_uploaded_file($_FILES['photo']['tmp_name'], './uploads/'.$fileName);
+                            move_uploaded_file($_FILES['image']['tmp_name'], './uploads/'.$fileName);
+                            echo './uploads/'.$fileName;
                         } else{
-                            // what if it aint an image
+                            echo "error:extension";
                         }
     
                     }

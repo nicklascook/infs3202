@@ -100,4 +100,84 @@ $(document).ready(function(){
     $("#itemDisplay").find("h3").html(bannerData[bannerRandomiser][2]);
     $("#itemDisplay").find("img").attr("src", bannerData[bannerRandomiser][3] );
     
+
+    // Run the function only if the page is on sell.php:
+    if ($("body").hasClass("sellItemBody")){ 
+        $(".imageDropContainer").on('dragenter', function (e) { // Dragging image changes css
+            e.preventDefault();
+            $(".imageDropText").text("Drop to upload")
+            $(this).addClass("imageDropHover");
+        });
+        $(".imageDropContainer").on('dragleave', function (e) {
+            e.preventDefault();
+            $(".imageDropText").text("Drag and Drop Images Here")
+            $(this).removeClass("imageDropHover");
+        });
+
+        $(".imageDropContainer").on('dragover', function (e) {
+            e.preventDefault();
+        });
+
+        // Capture drop function on entire window to prevent accidental loading rather than uploading of the image
+        $(window).on('drop', function (e) {
+            e.preventDefault();
+            $(".imageDropText").text("Drag and Drop Images Here")
+            $(".imageDropContainer").removeClass("imageDropHover");
+
+            // Clear out any existing error messages:
+            $(".imageDrop-error").remove();
+            var image = e.originalEvent.dataTransfer.files; // get the file
+            console.log(image)
+            createFormData(image); // create the formData for uploading
+        });
+        // Necessary for preventing loading of image
+        window.addEventListener("dragover", function (e) {
+            e = e || event;
+            e.preventDefault();
+        }, false);
+       
+    }
+
+     
+    // Creates FormData object to send to uploading function
+    function createFormData(image) {
+        var formImage = new FormData();
+        for(var i=0; i < image.length; i++){
+            formImage.append('image', image[i]);
+        }
+            
+        uploadFormData(formImage);
+    }
+
+    // Uploads form data, creates error messages, appends image preview
+    function uploadFormData(formData) {
+        $.ajax({
+            url: "newItemHandle.php",
+            type: "POST",
+            data: formData,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (response) {
+
+                if(response == "error:filesize"){
+                    var errorMsg = $("<h3 class='imageDrop-error'>Error: Filesize is too large for uploading (2mb max)</h3>");
+                    $(".imageDropPreviewContainer").prepend(errorMsg);
+                    console.log("filesize")
+                } else if (response === "error:extension"){
+                    var errorMsg = $("<h3 class='imageDrop-error'>Error: The extension is not compatible (jpg/jpeg/png/gif only)</h3>")
+                    $(".imageDropPreviewContainer").prepend(errorMsg);
+                } else{
+                    var imagePreview = $("<img src='' class='imageDropPreview'>")
+                    imagePreview.attr("src", response);
+                    $('.imageDropPreviewContainer').append(imagePreview);
+                    $('.imageDropPreviewContainer').show();
+                }
+            }
+        });
+    }
+
+
+
+
 })

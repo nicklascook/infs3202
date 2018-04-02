@@ -61,8 +61,20 @@
 
                 <section>
                     <h2>Photos:</h2>
-                    <input type="file" name="photo" size="25" />
-                    <hr>
+                    <!-- <input type="file" name="photo" size="25" /> -->
+
+                    <div class="imageDropContainer">
+                        <div class="imageDropText">Drag and Drop Images Here
+                            <span class="icon-camera"></span>
+                        </div>
+                    </div>
+
+                    <h3>Uploaded:</h3>
+
+                    <div class="imageDropPreviewContainer">
+                    </div>
+
+
                 </section>
 
                 <section class="detailsSection">

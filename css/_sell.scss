@@ -297,3 +297,52 @@ body.sellItemBody{
     margin-top: 30px;
     margin-bottom: 30px;
 }
+
+.imageDropContainer{
+    // background-color: $grey;
+    min-height: 300px;
+    border: 2px dashed $grey;
+    text-align: center;
+    margin-right: 40px;
+    transition: 0.3s $standard-curve;
+
+    .imageDropText{
+        color: darken($grey, 10%);
+        line-height: 300px;
+    
+    }
+
+}
+.imageDropHover{
+    border: 2px dashed $green;
+    background-color: lighten($green,40%);
+    .imageDropText{
+        color: black;
+        text-decoration: underline;
+    }
+}
+.imageDropPreviewContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: baseline;
+    h3{
+        width: 100%;
+    }
+    img{
+        width: 33%;
+        flex-basis: auto;
+        height: auto;
+    }
+    h3.imageDrop-error{
+        color: $red;
+        border: 1px solid $red;
+        margin-right: 40px;
+        padding: 5px;
+        border-radius: 5px;
+        text-align: center;
+        
+    }
+}
