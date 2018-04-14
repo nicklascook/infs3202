@@ -458,12 +458,16 @@
   -webkit-appearance: none;
   border: 2px solid #e2e2e2;
   color: #969696;
-  transition: 0.3s;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .searchContainer .searchBar input:focus, .searchContainer .searchBar button:focus {
   outline: none;
   border-color: #7a87cc;
+}
+
+.searchContainer .searchBar button {
+  cursor: pointer;
 }
 
 .searchContainer .searchBar input {
@@ -477,14 +481,8 @@
 .searchContainer .searchBar button:hover {
   background-color: #7a87cc;
   color: white;
-  border-radius: 100%;
-  padding-left: 12px;
-  padding-right: 12px;
-  border-color: white;
-  border-left: 4px solid white;
-  border-right: 4px solid white;
-  margin-left: 1px;
-  outline: none;
+  border-radius: 5px;
+  border-color: #7a87cc;
 }
 
 .categoryPanelContainer {
@@ -557,94 +555,48 @@
 
 .searchContainer .categoryColumn .categoryPicker p {
   margin-left: 40px;
-}
-
-.searchContainer .categoryColumn .categoryPicker li {
-  list-style: none;
-}
-
-.searchContainer .categoryColumn .categoryPicker a {
-  text-decoration: none;
-  color: #5faceb;
-}
-
-.searchContainer .categoryColumn .categoryPicker a:hover {
-  text-decoration: underline;
+  font-weight: bolder;
+  font-size: 17px;
+  margin-bottom: 0;
 }
 
 .searchContainer .categoryColumn .filter {
   margin-left: 40px;
-  width: 100%;
-  /* Create a custom checkbox */
-  /* On mouse-over, add a grey background color */
-  /* When the checkbox is checked, add a blue background */
-  /* Create the checkmark/indicator (hidden when not checked) */
-  /* Show the checkmark when checked */
-  /* Style the checkmark/indicator */
 }
 
-.searchContainer .categoryColumn .filter .container {
-  display: block;
-  position: relative;
-  margin-bottom: 12px;
+.searchContainer .categoryColumn .filter p {
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.searchContainer .categoryColumn .filter label {
   cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  color: #7c7c7c;
+  transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.searchContainer .categoryColumn .filter .container p {
-  margin-left: 30px;
+.searchContainer .categoryColumn .filter label:hover {
+  color: black;
+  outline: green;
 }
 
-.searchContainer .categoryColumn .filter .container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
+.searchContainer .categoryColumn .filter input {
+  display: inline;
+  float: left;
+  margin-right: 10px;
+  margin-top: 5px;
 }
 
-.searchContainer .categoryColumn .filter .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  background-color: #e2e2e2;
-  border-radius: 100%;
-}
-
-.searchContainer .categoryColumn .filter .container input:checked ~ .checkmark {
-  background-color: #5faceb;
-}
-
-.searchContainer .categoryColumn .filter .checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-.searchContainer .categoryColumn .filter .container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-.searchContainer .categoryColumn .filter .container .checkmark:after {
-  left: 7px;
-  top: 3px;
-  width: 4px;
-  height: 8px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+.searchContainer .categoryColumn .price {
+  margin-left: 40px;
 }
 
 .searchContainer .categoryColumn .price input {
-  width: 40px;
+  width: 50px;
   height: 25px;
   font-size: 15px;
   border: 1px solid #e2e2e2;
+  display: inline;
 }
 
 .searchContainer .categoryColumn .price input:focus {
@@ -704,6 +656,40 @@
   float: left;
   border: 1px solid #e2e2e2;
   display: block;
+}
+
+select {
+  -webkit-appearance: button;
+  -webkit-border-radius: 2px;
+  -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  -webkit-padding-end: 20px;
+  -webkit-padding-start: 2px;
+  -webkit-user-select: none;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' style='fill: grey;' width='30px' height='20px'><polyline points='18,5 9,15 0,5'/></svg>");
+  background-position: 97% center;
+  background-repeat: no-repeat;
+  border: 1px solid #AAA;
+  color: #555;
+  font-size: inherit;
+  margin: 20px;
+  overflow: hidden;
+  padding: 5px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 150px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 12px;
+  margin-left: 40px;
+  margin-bottom: 0;
+}
+
+select:focus {
+  outline: none;
+}
+
+select:hover {
+  border-color: #7a87cc;
 }
 
 body.sellItemBody {
@@ -841,7 +827,7 @@ body.sellItemBody {
   text-overflow: ellipsis;
   white-space: nowrap;
   padding-left: 20px;
-  width: 120px;
+  width: 150px;
   border-radius: 3px;
   cursor: pointer;
   margin-top: 12px;
@@ -866,7 +852,7 @@ body.sellItemBody {
   margin-right: 20px;
   font-size: 14px;
   margin-top: 10px;
-  width: 110px;
+  width: 140px;
   padding-left: 5px;
 }
 
@@ -1086,6 +1072,12 @@ body {
   margin: auto;
   width: 100%;
   background-color: #fff;
+  position: relative;
+  transition: 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.itemDisplay:hover .carouselButton {
+  opacity: 1;
 }
 
 .itemDisplay .itemDisplay_One {
@@ -1096,7 +1088,7 @@ body {
 }
 
 .itemDisplay .itemDisplay_One .itemDisplay_textContainer {
-  width: 33%;
+  width: 40%;
   height: 100%;
   position: absolute;
   padding-left: 50px;
@@ -1105,9 +1097,11 @@ body {
 
 .itemDisplay .itemDisplay_One .itemDisplay_textContainer button {
   margin-top: 0;
-  position: relative;
+  position: absolute;
   display: block;
-  bottom: 10px;
+  bottom: 40px;
+  left: 50%;
+  margin-left: -80px;
 }
 
 .itemDisplay .itemDisplay_One .itemDisplay_textContainer h2 {
@@ -1118,6 +1112,7 @@ body {
 
 .itemDisplay .itemDisplay_One .itemDisplay_textContainer h3 {
   font-size: 20px;
+  padding-right: 50px;
   margin: 0;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -1172,5 +1167,38 @@ body {
 
 .recentlyViewed .recentlyViewedItem_row .recentlyViewedItem:hover {
   border: 1px solid #e2e2e2;
+}
+
+.indexMessage {
+  text-align: center;
+  border: 2px solid #4caf50;
+  padding: 10px;
+  margin-left: 30%;
+  margin-right: 30%;
+  border-radius: 8px;
+  color: #2d682f;
+}
+
+.carouselButton {
+  position: absolute;
+  right: 30px;
+  bottom: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  font-size: 20px;
+  display: block;
+  margin-bottom: -20px;
+  cursor: pointer;
+  border: 1px solid #e2e2e2;
+  color: #e2e2e2;
+  background-color: transparent;
+  opacity: 0;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carouselButton:hover {
+  color: #5faceb;
+  background-color: #fff;
 }
 /*# sourceMappingURL=style.css.map */

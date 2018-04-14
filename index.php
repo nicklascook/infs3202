@@ -45,6 +45,14 @@ session_start();
         </div>
     </nav>
 
+    <?php 
+        if (isset($_SESSION['message'])){
+            echo "<p class='indexMessage'>" . $_SESSION['message'] . "</p>";
+            unset($_SESSION['message']);
+        }
+
+    ?>
+
     <div class="searchContainer row">
         <div class="searchBar">
             <form action="search.php" method="GET">
@@ -56,18 +64,19 @@ session_start();
     </div>
     <div class="categoryPanelContainer row">
         <div class="categoryPanel">
-            <button class="categoryButton">Fashion</button>
-            <button class="categoryButton">Motors</button>
-            <button class="categoryButton">Garden</button>
-            <button class="categoryButton">Home</button>
-            <button class="categoryButton">Electronics</button>
-            <button class="categoryButton">Toys</button>
-            <button class="categoryButton">Health</button>
-            <button class="categoryButton">Collectables</button>
+            <a href="search.php?category=fashion"><button class="categoryButton">Fashion</button></a>
+            <a href="search.php?category=motors"><button class="categoryButton">Motors</button></a>
+            <a href="search.php?category=garden"><button class="categoryButton">Garden</button></a>
+            <a href="search.php?category=home"><button class="categoryButton">Home</button></a>
+            <a href="search.php?category=electronics"><button class="categoryButton">Electronics</button></a>
+            <a href="search.php?category=toys"><button class="categoryButton">Toys</button></a>
+            <a href="search.php?category=health"><button class="categoryButton">Health</button></a>
+            <a href="search.php?category=collectables"><button class="categoryButton">Collectables</button></a>
         </div>
     </div>
 
     <div class="itemDisplay itemDisplay_One" id="itemDisplay">
+        <button class="carouselButton"><span class="icon-arrow-right"></span></button>
         <div class="itemDisplay_One" >
             <div class="itemDisplay_textContainer">
                 <h2></h2>

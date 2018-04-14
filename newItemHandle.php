@@ -3,64 +3,52 @@
     require("db.php");
 
 
+    foreach( $_SESSION['uploadedImages'] as $imageName){
+        echo "<;>" . $imageName;
+    }
+    $username = $_SESSION['username'];
+    $name = $_POST['name'];
+    $category = $_POST['category'];
+    if ($_POST['condition'] === "new"){
+        $newCondition = 1;
+    } else{
+        $newCondition = 0;
+    }
+    $postageType = $_POST['postagetype'];
+    $brand = $_POST['brand'];
+    $description = $_POST['description'];
 
-    // $name = $_POST['name'];
-    // $condition = $_POST['condition'];
-    // $postagetype = $_POST['postagetype'];
-    // $brand = $_POST['brand'];
-    // $description = $_POST['description'];
-    // $pricetype = $_POST['pricetype'];
+    $pricetype = $_POST['pricetype'];
+    if($pricetype === "bid"){
+        $bidding = 1;
+        $price = $_POST['bidprice'];
+    } else{
+        $bidding = 0;
+        $price = $_POST['buyprice'];
+    }
 
-    // if($pricetype === "bid"){
-    //     $price = $_POST['bidprice'];
-    // } else{
-    //     $price = $_POST['buyprice'];
-    // }
+    $imageLocation = "";
+     foreach( $_SESSION['uploadedImages'] as $imageName){
+        $imageLocation = $imageLocation . "<;>" . $imageName;
+    }
 
-
-    $images = $_FILES['image']["name"];
-    // echo $images;
-    photoUpload($images);
+    unset($_SESSION['uploadedImages']);
 
 
-    function photoUpload(){
-        
-            if($_FILES['image']['name']){ // if file is uploaded:
-                //if no errors:
-                if(!$_FILES['image']['error']){
-    
-                    $fileName = strtolower($_FILES['image']['name']); //rename file, lower case
-    
-    
-                    if($_FILES['image']['size'] > (2048000)){ // check that file is 2mb max
-                        echo "error:filesize";
-                    } else{ 
-                        
-                        $extension = "." . pathinfo($fileName, PATHINFO_EXTENSION); // Get the extension of the file
-                        // Check if the file exists:
-                        if (file_exists('./uploads/'. $fileName)){
-                            list($imageName) = explode($extension, $fileName); // Separate the name itself
-                            
-                            $count = 1; // start a count for the while loop
-                            while(file_exists('./uploads/'. $fileName)){ // While an image of that name exists:
-                                $fileName = $imageName . $count . $extension; // Add 1 to the original image name:
-                                $count ++;
-                            }
-                        }
-    
-                        if($extension === ".png" || $extension === ".gif" || $extension === ".jpg" || $extension === ".jpeg"){ // check that it is an image
-                            
-                            move_uploaded_file($_FILES['image']['tmp_name'], './uploads/'.$fileName);
-                            echo './uploads/'.$fileName;
-                        } else{
-                            echo "error:extension";
-                        }
-    
-                    }
-    
-                }
-            }
+    $sqlEntry = "INSERT INTO items (username, name, description, newCondition, brand, bidding, price, postageType, category, imageLocation) " 
+            . "VALUES ('$username','$name','$description', '$newCondition', '$brand', '$bidding', '$price', '$postageType', '$category', '$imageLocation')";
+        if ($mysqli->query($sqlEntry)){
 
-     } 
+            $_SESSION['message'] = "Item successfully posted!";
+            header("Location: index.php");
+
+
+
+        } else{
+            $_SESSION['message'] = 'Something went wrong with posting the item! Please try again!';
+            header("Location: index.php");
+        }
+
+
 
 ?>

@@ -18,23 +18,33 @@ body{
     margin: auto;
     width: 100%;
     background-color: #fff;
+    position: relative;
+    transition: 1s $standard-curve;
+    &:hover{
+        .carouselButton{
+            opacity: 1;
+        }
+    }
     .itemDisplay_One{
         width: 70%;
         margin: auto;
         height: 300px;
         overflow: hidden;
         .itemDisplay_textContainer{
-            width: 33%;
+            width: 40%;
             height: 100%;
             position: absolute;
             padding-left: 50px;
             color: white;
+
             button{
                @extend .btn;
                margin-top: 0;
-               position: relative;
+               position: absolute;
                display: block;
-               bottom: 10px;
+               bottom: 40px;
+               left: 50%;
+               margin-left: -80px;
             }
             
             h2{
@@ -44,6 +54,7 @@ body{
             }
             h3{
                 font-size: 20px;
+                padding-right: 50px;
                 margin: 0;
                 margin-top: 10px;
                 margin-bottom: 10px;
@@ -99,3 +110,36 @@ body{
     }
 }
 
+
+.indexMessage{
+    text-align: center;
+    border: 2px solid $green; 
+    padding: 10px;
+    margin-left: 30%;
+    margin-right: 30%;
+    border-radius: 8px;
+    color: darken($green, 20%);
+}
+
+.carouselButton{
+    position: absolute;
+    right: 30px;
+    bottom: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    font-size: 20px;
+    display: block;
+    margin-bottom: -20px;
+    cursor: pointer;
+    border: 1px solid $grey;
+    color: $grey;
+    background-color: transparent;
+    opacity: 0;
+    transition: 0.3s $standard-curve;
+
+    &:hover{
+        color: $primaryColor;
+        background-color: #fff;
+    }
+}

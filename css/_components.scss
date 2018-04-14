@@ -124,12 +124,15 @@
             -webkit-appearance: none;
             border: 2px solid $grey;
             color: darken($grey, 30%);
-            transition: 0.3s;
+            transition: 0.3s $standard-curve;
             &:focus{
                 outline:none;
                 border-color: $accentColor;
                 
             }
+        }
+        button{
+            cursor: pointer;
         }
         input{
             width: 40vw;
@@ -140,14 +143,12 @@
         button:hover{
             background-color: $accentColor;
             color: white;
-            border-radius: 100%;
-            padding-left: 12px;
-            padding-right: 12px;
-            border-color: white;
-            border-left: 4px solid white;
-            border-right: 4px solid white;
-            margin-left: 1px;
-            outline: none;
+            border-radius: 5px;
+            border-color: $accentColor;
+            // border-left: 4px solid white;
+            // border-right: 4px solid white;
+            // margin-left: 1px;
+            // outline: none;
         }
     }
    
