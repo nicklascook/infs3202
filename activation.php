@@ -88,8 +88,7 @@
                     $sqlEntry = "UPDATE users SET activated='1' WHERE email='$email'";
                     if ($mysqli->query($sqlEntry)){
                         $_SESSION["activated"] = 1;
-                        echo "Your account has been activated";
-                        echo "Go home ->";
+                        echo "<p class='activationText'>Your account has been activated. <br> <a href='index.php>Go Home</a>'</p>";
                     }
                 }
 

@@ -1,0 +1,126 @@
+.accountInfo{
+    width: 100%;
+    margin-top: 50px;
+}
+.accountDetails{
+    float: left;
+    width: 70%;
+    .accountImage{
+        width: 200px;
+        margin-left: 10%;
+        float: left;
+    }
+    h1, h2{
+        display: inline-block;
+        float: left;
+        width: 50%;
+        margin-left: 50px;
+    }
+}
+.accountStats{
+    float: left;
+    width: 10%;
+    margin-left: 9%;
+    margin-right: 10%;
+    background-color: lighten($grey, 7%);
+    border: 1px solid $grey;
+    h3{
+        padding-left: 20px;
+    }
+}
+
+.accountTabsContainer{
+    width: 100%;
+    float: left;
+    margin-top: 50px;
+    border-top: 4px solid darken($accentColor, 10%);
+}
+.accountTabsWrap{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-color: $accentColor;
+    h2{
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin: 0;
+        width: 20%;
+        transition: 0.2s $standard-curve;
+        font-size: 18px;
+        cursor: pointer;
+        color: white;
+        font-weight: lighter;
+        
+        &:hover{
+            background-color:lighten($accentColor, 7%);
+        }
+    }
+    .accountTab-active{
+        background-color: darken($accentColor, 10%);
+        text-decoration: underline;
+        &:hover {
+            background-color: darken($accentColor, 5%);
+        }
+        
+    }
+}
+
+.bookmarksTab{
+}
+.accountItem{
+    @extend .item;
+    padding-left: 5%;
+    .accountItemInfo{
+        @extend .itemInfo;
+    }
+    .accountItemImg{
+        @extend .itemImg;
+    }
+}
+.itemsForSaleTab, .orderHistoryTab{
+    display: none;
+}
+.deleteItem{
+    font-size: 30px;
+    margin-top: 40px;
+    font-weight: bolder;
+    color: rgb(85, 85, 85);
+    cursor: pointer;
+    transition: 0.3s $standard-curve;
+    text-align: center;
+    height: 100px;
+    p{
+        opacity: 0;
+        font-size: 20px;
+        margin-top: -3px;
+    }
+    &:hover{
+        p{
+            opacity: 1;
+        }
+        animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+        transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        perspective: 1000px;
+        color: $red;
+    }
+}
+@keyframes shake {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80% {
+        transform: translate3d(1px, 0, 0);
+    }
+    30%, 50%, 70% {
+        transform: translate3d(-2px, 0, 0);
+    }
+    40%,
+    60% {
+        transform: translate3d(2px, 0, 0);
+    }
+}

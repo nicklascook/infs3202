@@ -1,0 +1,102 @@
+.buyBlock{
+    
+    background-color: lighten($grey, 5%);
+    display: block;
+    position: relative;
+    border-radius: 5px;
+    
+    
+}
+
+.buyBlockWrap{
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+    // h3{
+    //     color: darken($grey, 20%);
+    // }
+}
+.buyItemTop{
+    padding: 10px;
+    border-bottom: 2px solid $grey;
+    padding-left: 30px;
+    a, p{
+        display: inline;
+        text-decoration: none;
+    }
+}
+
+.buyItemImgCol{
+    width: 30%;
+    padding-top: 20px;
+    float: left;
+    margin: 0 auto;
+    background-color: lighten($grey, 5%);
+    display: block;
+    height: 200px;
+    img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+        border: 2px solid $grey;
+    }
+}
+.buyItemTextCol{
+    width: 50%;
+    float: left;
+    background-color: lighten($grey, 5%);
+    height: 50px;
+    height: 200px;
+    padding-top: 20px;
+}
+.buyItemPriceCol{
+    background-color: lighten($grey, 5%);
+    width: 20%;
+    padding-top: 20px;
+    float: left;
+    text-align: center;
+    height: 200px;
+    font-size: 20px;
+}
+
+.buyPostageBlock{
+    margin: auto;
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.buyPostageRow{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    input{
+        width: 100%;
+        margin-left: 10px;
+        margin-right: 10px;
+        height: 25px;
+        padding-left: 5px;
+        border: 2px solid $grey;
+        &::placeholder{
+            // padding-left: 5px;
+        }
+    }
+}
+
+.buyPostageBlockWrap{
+    margin-top: 260px;
+}
+
+.buyPurchase{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    height: 70px;
+    margin-bottom: 50px;
+    #paypal-button{
+        margin-top: 20px;
+        
+    }
+}

@@ -291,11 +291,23 @@ body.sellItemBody{
 }
 
 .submitSellBtn{
-    color: $primaryColor;
-    border-color: $primaryColor;
+    color: white;
+    background-color: $primaryColor;
     margin: 0 auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 200px;
+    font-size: 20px;
+    cursor: pointer;
+    &:hover{
+        color: $primaryColor;
+        border-color: $primaryColor;
+    }
+}
+.submitBtnContent{
+    margin-left: -40px;
+    padding-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .imageDropContainer{

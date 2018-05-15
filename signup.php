@@ -25,13 +25,13 @@
             </h1>
 
             <h2 class="signupTitle"><span class="icon-user"></span> Sign Up</h2>
-            <form action="signupHandle.php" method="POST" class="loginForm signupForm">
+            <form action="signupHandle.php" method="POST" class="loginForm signupForm" id="signupForm">
                 <p>Email:</p> 
-                <input type="text" name="email" placeholder="">
+                <input type="text" id="emailSignupInput" name="email" placeholder="">
                 <p>Username:</p> 
-                <input type="text" name="username" placeholder="">
+                <input type="text" id="usernameSignupInput" name="username" placeholder="">
                 <p>Password:</p> 
-                <input type="password" name="password" placeholder="">
+                <input id="passwordSignupInput" type="password" name="password" placeholder="">
                 <button type="submit" class="btn btn-secondary">Sign Up <span class="icon-check"></span></button>
 
                 <?php
@@ -53,5 +53,6 @@
 
 
 </body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/script.js"></script>
 </html>

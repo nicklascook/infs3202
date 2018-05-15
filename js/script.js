@@ -1,3 +1,16 @@
+// from https://stackoverflow.com/questions/28938825/select-option-depending-on-get-parameter?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+// Needs to be accessed by global scope
+function getUrlParam(sParam) {
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) {
+            return sParameterName[1];
+        }
+    }
+}
+
 $(document).ready(function(){
 
     // Page Setup events
@@ -7,8 +20,128 @@ $(document).ready(function(){
         $(".accountArrow").toggleClass("icon-chevron-down")
     });
 
-    
 
+
+    
+    var verificationRequest;
+    $("#emailSignupInput").focusout(function () {
+       verifyUserData("email", $(this).val(), $(this));
+    })
+
+    $("#usernameSignupInput").focusout(function () {
+        verifyUserData("username", $(this).val(), $(this));
+    })
+    $("#emailSignupInput").focus(function () {
+        $(this).removeClass("signupInput-invalid");
+        $(this).removeClass("signupInput-valid");
+        $(this).prev("p").removeClass("signupInput-invalid")
+        $(this).prev("p").removeClass("signupInput-valid")
+        $(this).prev("p").text("Email:");
+    })
+
+    $("#usernameSignupInput").focus(function () {
+        $(this).removeClass("signupInput-invalid");
+        $(this).removeClass("signupInput-valid");
+        $(this).prev("p").removeClass("signupInput-invalid")
+        $(this).prev("p").removeClass("signupInput-valid")
+        $(this).prev("p").text("Username:");
+    })
+
+    $("#passwordSignupInput").keyup(function(){
+        console.log($(this).val().length)
+        if ($(this).val().length < 8){
+            passwordValid = false;
+            $(this).prev("p").text("Password: 8 characters min");
+            $(this).prev("p").removeClass("signupInput-valid");
+            $(this).removeClass("signupInput-valid")
+
+        } else if ($(this).val().length < 16){
+            passwordValid = true;
+            $(this).prev("p").text("Password: ");
+            $(this).prev("p").addClass("signupInput-valid")
+            $(this).addClass("signupInput-valid")
+            $(this).prev("p").append("<span class='icon-check'> </span>");
+
+        } else if ($(this).val().length > 16){
+            passwordValid = false;
+            $(this).prev("p").text("Password: 16 characters max");
+            $(this).prev("p").removeClass("signupInput-valid");
+            $(this).removeClass("signupInput-valid")
+        }
+    })
+    var passwordValid = false;
+    var usernameValid = false;
+    var emailValid = false;
+    function verifyUserData(valueType, value, input){
+        if (verificationRequest) {
+            verificationRequest.abort();
+        }
+        var data = {
+            [valueType]: value
+        };
+
+        if(value.length > 0){
+            $.ajax({
+                url: "verifyData.php",
+                type: "post",
+                data: data,
+                success: function (response) {
+                    var valid = false;
+                    if(valueType === "email"){
+                        if(isValidEmailAddress(value)){
+                            valid = true;
+                        }
+                    } else{
+                        if(isValidUsername(value)){
+                            valid = true;
+                        }
+                    }
+                    
+
+                    if (response || !valid) {
+                        if (valueType === "email") {
+                            emailValid = false;
+                        } else {
+                            usernameValid = false;
+                        }
+                        $(input).addClass("signupInput-invalid");
+                        $(input).prev("p").addClass("signupInput-invalid")
+                        $(input).prev("p").text("Invalid " + valueType + " ");
+                        $(input).prev("p").append("<span class='icon-x'> </span>");
+                    } else {
+                        
+                        if(valueType === "email"){
+                            emailValid = true;
+                        } else{
+                            usernameValid = true;
+                        }
+                        $(input).addClass("signupInput-valid");
+                        $(input).prev("p").addClass("signupInput-valid")
+                        $(input).prev("p").append("<span class='icon-check'> </span>");
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+        }
+        
+    }
+
+    function isValidUsername(username){
+        var usernameRegEx = new RegExp(/^[a-z0-9]+$/);
+        return usernameRegEx.test(username);
+    }
+
+    // FROM https://stackoverflow.com/questions/8398403/check-if-correct-e-mail-was-entered?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+    function isValidEmailAddress(emailAddress) {
+        var emailRegEx = new RegExp(/^(("[\w-+\s]+")|([\w-+]+(?:\.[\w-+]+)*)|("[\w-+\s]+")([\w-+]+(?:\.[\w-+]+)*))(@((?:[\w-+]+\.)*\w[\w-+]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][\d]\.|1[\d]{2}\.|[\d]{1,2}\.))((25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\.){2}(25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\]?$)/i);
+        return emailRegEx.test(emailAddress);
+    };
+
+
+
+    
 
 
     var bannerRandomiser = Math.floor(Math.random()*4);
@@ -17,25 +150,29 @@ $(document).ready(function(){
             "#9fa8da",
             "Everything Under $20",
             "Browse everything from gifts to fashion, nothing is over $20!",
-            "img/itemDisplayOne_under20.png"
+            "img/itemDisplayOne_under20.png",
+            "search.php?maxPrice=20"
         ],
         [
             "#66bb6a",
             "Find Your Passion",
             "Get the right gear for your new hobby.",
-            "img/itemDisplayOne_passion.png"
+            "img/itemDisplayOne_passion.png",
+            "search.php?category=collectables"
         ],
          [
             "#ffb300",
             "Reinvent Your Home",
             "Search by new or used furniture.",
-            "img/itemDisplayOne_home.png"
+            "img/itemDisplayOne_home.png",
+            "search.php?category=home"
         ],
          [
             "#ff7043",
             "The Newest Tech",
             "Don't fall behind - shop the newest, fastest tech on the market.",
-            "img/itemDisplayOne_tech.png"
+            "img/itemDisplayOne_tech.png",
+            "search.php?category=electronics"
         ]
     ]
     
@@ -57,191 +194,58 @@ $(document).ready(function(){
         $("#itemDisplay").find("h2").html(bannerData[bannerRandomiser][1]);
         $("#itemDisplay").find("h3").html(bannerData[bannerRandomiser][2]);
         $("#itemDisplay").find("img").attr("src", bannerData[bannerRandomiser][3]);
+        $("#itemDisplay").find("a").attr("href", bannerData[bannerRandomiser][4]);
     }
 
-    // Run the function only if the page is on sell.php:
-    if ($("body").hasClass("sellItemBody")){ 
-        $(".imageDropContainer").on('dragenter', function (e) { // Dragging image changes css
-            e.preventDefault();
-            $(".imageDropText").text("Drop to upload")
-            $(this).addClass("imageDropHover");
-        });
-        $(".imageDropContainer").on('dragleave', function (e) {
-            e.preventDefault();
-            $(".imageDropText").text("Drag and Drop Images Here")
-            $(this).removeClass("imageDropHover");
-        });
-
-        $(".imageDropContainer").on('dragover', function (e) {
-            e.preventDefault();
-        });
-
-        // Capture drop function on entire window to prevent accidental loading rather than uploading of the image
-        $(window).on('drop', function (e) {
-            e.preventDefault();
-            $(".imageDropText").text("Drag and Drop Images Here")
-            $(".imageDropContainer").removeClass("imageDropHover");
-
-            // Clear out any existing error messages:
-            $(".imageDrop-error").remove();
-            var image = e.originalEvent.dataTransfer.files; // get the file
-            createFormData(image); // create the formData for uploading
-        });
-        // Necessary for preventing loading of image
-        window.addEventListener("dragover", function (e) {
-            e = e || event;
-            e.preventDefault();
-        }, false);
-       
-    }
-
+  
      
-    // Creates FormData object to send to uploading function
-    function createFormData(image) {
-        var formImage = new FormData();
-        for(var i=0; i < image.length; i++){
-            formImage.append('image', image[i]);
-        }
-            
-        uploadFormData(formImage);
-    }
+   
 
-    // Uploads form data, creates error messages, appends image preview
-    var imageAddCount = 0;
-    function uploadFormData(formData) {
-        $.ajax({
-            url: "imageUpload.php",
-            type: "POST",
-            data: formData,
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function (response) {
+  
 
-                if(response == "error:filesize"){
-                    var errorMsg = $("<h3 class='imageDrop-error'>Error: Filesize is too large for uploading (4mb max)</h3>");
-                    $(".imageDropPreviewContainer").prepend(errorMsg);
-                } else if (response === "error:extension"){
-                    var errorMsg = $("<h3 class='imageDrop-error'>Error: The extension is not compatible (jpg/jpeg/png/gif only)</h3>")
-                    $(".imageDropPreviewContainer").prepend(errorMsg);
-                } else if( imageAddCount > 8){
-                    var errorMsg = $("<h3 class='imageDrop-error'>Error: Reached maximum file upload limit</h3>")
-                    $(".imageDropPreviewContainer").prepend(errorMsg);
-
-                } else{
-                    var imagePreview = $("<img src='' class='imageDropPreview'>")
-                    imagePreview.attr("src", response);
-                    $('.imageDropPreviewContainer').append(imagePreview);
-
-                    imageAddCount ++;
-                }
-            }
-        });
-    }
-
-    $("#bidRadio").focus(function () {
-        $(this).parent().addClass("pricingBlock-active");
-        $("#bidPrice").prop('required', true);
-        $("#buyPrice").removeAttr("required");
-        $("#buyRadio").parent().removeClass("pricingBlock-active");
-    });
-    $("#buyRadio").focus(function () {
-        $(this).parent().addClass("pricingBlock-active");
-        $("#buyPrice").prop('required', true);
-        $("#bidPrice").removeAttr("required");
-        $("#bidRadio").parent().removeClass("pricingBlock-active");
-    });
-    $("#bidPrice").focus(function () {
-        $(this).parent().parent().addClass("pricingBlock-active");
-        $("#bidRadio").prop("checked", true);
-        $("#bidRadio").change();
-        $(this).parent().addClass("pricingBlock-active");
-        $("#buyRadio").parent().removeClass("pricingBlock-active");
-        $("#buyPrice").parent().removeClass("pricingBlock-active");
-        $("#bidPrice").prop('required', true);
-        $("#buyPrice").removeAttr("required");
-    });
-    $("#buyPrice").focus(function () {
-        $(this).parent().parent().addClass("pricingBlock-active");
-        $("#buyRadio").prop("checked", true);
-        $("#buyRadio").change();
-        $(this).parent().addClass("pricingBlock-active");
-        $("#bidRadio").parent().removeClass("pricingBlock-active");
-        $("#bidPrice").parent().removeClass("pricingBlock-active");
-        $("#buyPrice").prop('required', true);
-        $("#bidPrice").removeAttr("required");
-    });
-
-    $("#itemNameInput").keyup(function () {
-        var length = $(this).val().length;
-        $(".barFill").width(0.5 * length + 10);
-
-        if (length < 20) {
-            $(".barFill").css({ backgroundColor: "#f4511e" });
-            $(".bar").css({ backgroundColor: "#ffccbc" });
-            $(".nameInputIndicatorText").text("Too short");
-            $(".nameInputIndicatorDetail").text("Include details such as brand, colour, size, condition.");
-        } else if (length < 30) {
-            $(".barFill").css({ backgroundColor: "#ffc107" });
-            $(".bar").css({ backgroundColor: "#ffecb3" });
-            $(".nameInputIndicatorText").text("Getting there");
-            $(".nameInputIndicatorDetail").text("Include details such as brand, colour, size, condition.");
-        } else if (length < 40) {
-            $(".barFill").css({ backgroundColor: "#8bc34a" });
-            $(".bar").css({ backgroundColor: "#dcedc8" });
-            $(".nameInputIndicatorText").text("Great length");
-            $(".nameInputIndicatorDetail").text("Don't stop there. Keep adding details.");
-        } else if (length < 60) {
-            $(".barFill").css({ backgroundColor: "#9fa8da" });
-            $(".bar").css({ backgroundColor: "#d1d9ff" });
-            $(".nameInputIndicatorDetail").text(60 - length + " characters left.");
-
-        } else if (length == 60) {
-            $(".barFill").css({ backgroundColor: "#6f79a8" });
-            $(".bar").css({ backgroundColor: "#9fa8da" });
-            $(".nameInputIndicatorText").text("Max Length");
-            $(".nameInputIndicatorDetail").text("0 characters left.");
-        }
-
-    })
+    
 
 
     $("#filterBtn").click(function(){
 
+        window.location.replace(applyFiltersToUrl());
+    })
+
+    function applyFiltersToUrl(){
         // On clicking filter button, get current URL, adjust current values, add on additional ones.
         var filters = window.location.search.substr(1).split("&"); // get current filters from URL, split by "?"
-        for(var i=0; i< filters.length; i++){ 
+        for (var i = 0; i < filters.length; i++) {
             var filterName = filters[i].split("=")[0]; // split filter by name and value, assign name to var
-            if(filterName !== "name"){ // remove any filters that are not "name"
+            if (filterName !== "name") { // remove any filters that are not "name"
                 filters.splice(i, 1);
                 i--; // adjust i due to splicing
             }
         }
 
-        
+
 
         // Add on Category filter:
-        if ($("#categoryFilterSelect").val() !== null){
+        if ($("#categoryFilterSelect").val() !== null) {
             filters.push("category=" + $("#categoryFilterSelect").val());
         }
 
         // Add on buy format filter:
-        if ($('input[name=format]:checked').val() !== undefined){
+        if ($('input[name=format]:checked').val() !== undefined) {
             filters.push("format=" + $('input[name=format]:checked').next("p").text());
         }
         // Add on buy condition filter:
-        if ($('input[name=condition]:checked').val() !== undefined){
+        if ($('input[name=condition]:checked').val() !== undefined) {
             filters.push("condition=" + $('input[name=condition]:checked').next("p").text());
         }
         // Add on buy postageType filter:
-        if ($('input[name=postageType]:checked').val() !== undefined){
+        if ($('input[name=postageType]:checked').val() !== undefined) {
             var postageTypeSpaceRemoved = $('input[name=postageType]:checked').next("p").text().replace(/\s+/g, '');
             filters.push("postageType=" + postageTypeSpaceRemoved);
         }
-        
+
         //Add on minimum Price
-        if ($("#minPriceFilter").val().trim() !== ""){
-            if (!isNaN($("#minPriceFilter").val())){
+        if ($("#minPriceFilter").val().trim() !== "") {
+            if (!isNaN($("#minPriceFilter").val())) {
                 filters.push("minPrice=" + $("#minPriceFilter").val());
                 var minPriceEntered = true;
             }
@@ -249,35 +253,134 @@ $(document).ready(function(){
         //Add on max Price
         if ($("#maxPriceFilter").val().trim() !== "") {
             if (!isNaN($("#maxPriceFilter").val())) {
-                if(minPriceEntered){ // Ensure that the minimum price is not greater than the maximum
-                    if ($("#minPriceFilter").val() < $("#maxPriceFilter").val()){
+                if (minPriceEntered) { // Ensure that the minimum price is not greater than the maximum
+                    if ($("#minPriceFilter").val() < $("#maxPriceFilter").val()) {
                         filters.push("maxPrice=" + $("#maxPriceFilter").val());
                     }
-                } else{
+                } else {
                     filters.push("maxPrice=" + $("#maxPriceFilter").val());
                 }
             }
         }
-        
-    
-        // CHANGE THE URL:
+
+
+        // RETURN THE NEW URL:
         var url = window.location.href.split('?')[0];
-      
-        if(filters.length !== 0){
-            for(var i = 0; i < filters.length; i++){
-                if(i === 0){
+
+        if (filters.length !== 0) {
+            for (var i = 0; i < filters.length; i++) {
+                if (i === 0) {
                     url += "?";
-                } else{
+                } else {
                     url += "&";
                 }
                 url += filters[i];
             }
         }
-        console.log(filters)
-        window.location.replace(url);
+        // window.location.replace(url);
+        return url;
 
+
+    }
+
+    $("#clearFilterBtn").click(function(){
+        var filters = window.location.search.substr(1).split("&"); // get current filters from URL, split by "?"
+        for (var i = 0; i < filters.length; i++) {
+            var filterName = filters[i].split("=")[0]; // split filter by name and value, assign name to var
+            if (filterName !== "name") { // remove any filters that are not "name"
+                filters.splice(i, 1);
+                i--; // adjust i due to splicing
+            }
+        }
+
+        var url = window.location.href.split('?')[0];
+        url += "?"+filters[0]
+        window.location.replace(url);
+    });
+
+    $("#searchSortSelect").change(function(){
+        if(window.location.href.split("?").length > 1){
+
+                // console.log(window.location.href.replace("/&?sort=([^&]$|[^&]*)/i, ''"));
+                var newURL = applyFiltersToUrl() + "&sort=" + $(this).val();
+                window.location.replace(newURL);
+            
+        } else{
+            var newURL = window.location.href + "?sort=" + $(this).val();
+            window.location.replace(newURL);
+        }
+        // console.log(window.location.href + "&sort=" + $(this).val())
+    })
+
+    // SET UP PAGE ON RELOAD BASED ON GET PARAMETERS (FILTERS)
+    $("#categoryFilterSelect").val(getUrlParam("category"));
+    if(getUrlParam("sort") != null){
+        $("#searchSortSelect").val((getUrlParam("sort")));
+    }
+    $('input:radio[name="format"]').filter('[value="'+ getUrlParam("format") +'"]').attr('checked', true);
+    $('input:radio[name="condition"]').filter('[value="'+ getUrlParam("condition") +'"]').attr('checked', true);
+    $('input:radio[name="postageType"]').filter('[value="'+ getUrlParam("postageType") +'"]').attr('checked', true);
+    $("#minPriceFilter").val(getUrlParam("minPrice"));
+    $("#maxPriceFilter").val(getUrlParam("maxPrice"));
+
+    
+
+    $("#signupForm").submit(function(e){
+        e.preventDefault();
+        
+        if(!emailValid){
+            alert("Please enter a valid email.")
+        } else if(!usernameValid){
+            alert("Please enter a valid username.")
+        } else if(!passwordValid){
+            alert("Please enter a valid password.")
+        } else{
+            $("#signupForm")[0].submit();
+        }
+        
 
     })
+
+    $(".accountTab").click(function(){
+        $(this).parent().children(".accountTab").removeClass("accountTab-active");
+        $(this).addClass("accountTab-active")
+        console.log($(this).text())
+        $(this).parent().nextAll(".accountTabContent").hide();
+        if ($(this).text() == "Bookmarks"){
+            $("#bookmarksTab").show();
+        } else if ($(this).text() == "Items For Sale"){
+            $("#itemsForSaleTab").show();
+        } else{
+            $("#orderHistoryTab").show();
+        }
+    })
+
+    $(".deleteItem").click(function(){
+        console.log($(this).parent(".accountItem").attr("itemId"))
+        var itemToDelete = $(this).parent(".accountItem");
+        var data = {
+            "itemId": itemToDelete.attr("itemId")
+        };
+
+            $.ajax({
+                url: "deleteItemHandle.php",
+                type: "post",
+                data: data,
+                success: function (response) {
+                    itemToDelete.remove();
+                    // Show visually that item has been removed first
+                    console.log(response)
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+        
+    })
+
+
+
+    
 
 
 

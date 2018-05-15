@@ -35,16 +35,27 @@
         </div>
         <div class="loginContainer">
             <?php
-                echo "<a href='account.php'><span class='icon-user'></span>".$_SESSION['username'] . "</a>";
+                if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']){
+                    echo "<span class='accountName'><span class='icon-user'></span> ".$_SESSION['username']." <span class='accountArrow icon-chevron-down'></span></span>";
+                    echo "<div class='accountDropdown'>
+                        <a href='account.php'>Account</a>
+                        <hr>
+                        <a href='sell.php'>Sell</a>
+                        <hr>
+                        <a href='logoutHandle.php'>Sign out</a>
 
+                    </div>";
+                } else{
+                    echo "<a href='signup.php' >Sign Up</a>
+                    /
+                    <a href='login.php' >Login</a>";
+                }
             ?>
-
-            
         </div>
     </nav>
 
 
-        <form action="newItemHandle.php" method="POST">
+        <form id="sellForm" action="newItemHandle.php" method="POST">
             <div class="sellInputBlock sellInputBlock-top">
                 <div class="sellInputContent">
                 <section>
@@ -156,7 +167,7 @@
                 </div>
             </div>
             <div class="sellInputBlock">
-                <div class="sellInputContent">
+                <div class="sellInputContent submitBtnContent">
                     <section>
                         <button value="submit" type="submit" class="btn submitSellBtn">Submit</button>
                     </section>
@@ -169,4 +180,5 @@
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="js/script.js"></script>
+<script src="js/sell.js"></script>
 </html>

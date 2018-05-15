@@ -106,6 +106,7 @@
                 margin-top: 10px;
                 transition: 0.3s $standard-curve;
                 border-bottom: 2px solid lighten($accentColor, 25%);
+                
                
                 &:focus{
                     outline: 0;
@@ -115,6 +116,8 @@
                     }
                 }
             }
+            
+           
 
         }
 
@@ -136,10 +139,24 @@
             input{
                 border-color: lighten(#ff7043, 20%);
                 margin-bottom: 20px;
+                
                 &:focus{
                     border-color: #e64a19;
                 }
             }
+            .signupInput-valid{
+                    border-color: $green ;
+                    color: $green;
+                    &:hover, &:focus{
+                         border-color: $green;
+                    }
+                
+            }
+            .signupInput-invalid{
+                border-color: $red ;
+                color: $red ;
+            }
+            
             
 
         }
@@ -181,3 +198,11 @@
     
 }
 }
+
+ input .signupInput-valid {
+     border: 2px solid $green !important;
+ }
+
+ input .signupInput-invalid {
+     border: 2px solid $red;
+ }

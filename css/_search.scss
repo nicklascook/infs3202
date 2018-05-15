@@ -6,15 +6,34 @@
         height: 1000px;
         float: left;
       
-
+        .filterBtnContainer{
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
         .btn{
             background-color: $primaryColor;
             color: white;
             border-color: $primaryColor;
             margin-top: 30px;
+            display: inline-block;
+            width: 50%;
+            margin-left: 5px;
+            margin-right: 5px;
             &:hover{
                 background-color: white;
                 color: $primaryColor;
+            }
+        }
+        .btn-clear{
+            width: 35%;
+            width: 100px;
+            background-color:white;
+            color: darken($grey, 10%);
+            border-color: darken($grey, 10%);
+            &:hover{
+                color: darken($grey, 30%);
+                border-color: darken($grey, 30%);
             }
         }
         hr{
@@ -85,55 +104,95 @@
         margin-top: 30px;
         height: 1000px;
         float: left;
+        // padding-left: 5%;
         background-color: lighten($grey, 10%);
 
         .sort{
-            margin-left: 50px;
+            float: right;
+            width: 20%;
+            margin-top: -60px;
+            // padding-top: 10px;
+            padding-right: 20px;
+            padding-bottom: 10px;
             p{
                 display: inline-block;
+                margin: 0;
 
             }
-            .btn{
-                background-color: $grey;
-                display: inline-block;
-                color: darken($grey, 30%);
-                border-color: darken($grey, 30%);
-                height: 30px;
-            }
-        }
-        .item{
-            width: 100%;
-            float: left;
-            border: 1px solid $grey;
-            .itemInfo{
-                // padding-top: 10px;
-                // margin-left: 50px;
-                width: 79%;
-                display: block;
-                float: left;
-                a{
-                    color: blue;
-                    text-decoration: none;
-                    padding-left: 50px;
-                    &:hover{
-                        text-decoration: underline;
-                    }
-                 }
+            select{
+                margin-left: 10px;
+                // width: 180px;
             }
             
-            .itemImg{
-                width: 20%;
-                max-height: 220px;
-                float: left;
-                border: 1px solid $grey;
-                display: block;
-            }
-        
         }
+        
     }
 
 }
+.item {
+    width: 100%;
+    float: left;
+    border: 1px solid $grey;
+    display: flex;
+    height: 250px;
+    transition: 0.2s $standard-curve;
+    &:hover{
+        h3{
+            text-decoration: underline;
+        }
+        .itemImg{
+            border-color: darken($grey, 5%);
+        }
+    
+        border-color: darken($grey, 15%);
+    }
+    .itemInfo {
+        // padding-top: 10px;
+        padding-left: 50px;
 
+        width: 50%;
+        display: block;
+        float: left;
+        a {
+            color: blue;
+            text-decoration: none;
+            padding-left: 50px;
+            margin-bottom: 0;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+        h4{
+            margin-top: 0;
+        }
+        h5{
+            color: rgb(63, 63, 63);
+        }
+        .itemPrice{
+            font-size: 18px;
+            color: white;
+            border: 1px solid $grey;
+            background-color: $accentColor;
+            border-radius: 5px;
+            display: inline-block;
+            padding: 5px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+    img {
+        width: 100px;
+        object-fit: contain;
+        max-height: 220px;
+        margin-left: 20px;
+        align-self: center;
+    }
+    .itemImg {
+        width: 20%;
+        float: left;
+        border: 1px solid $grey;
+    }
+}
 
 select{
         -webkit-appearance: button;
