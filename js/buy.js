@@ -28,6 +28,23 @@ paypal.Button.render({
     onAuthorize: function (data, actions) {
         return actions.payment.execute().then(function (payment) {
 
+            
+            var data = {
+                "itemId": getUrlParam("id")
+            };
+
+            $.ajax({
+                url: "purchaseHandle.php",
+                type: "post",
+                data: data,
+                success: function (response) {
+                    window.location.replace("index.php?itemPurchase=true");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                },
+            })
+
             // The payment is complete!
             // You can now show a confirmation message to the customer
         });

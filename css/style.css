@@ -127,6 +127,14 @@
   content: "\e91a";
 }
 
+.icon-upload-cloud:before {
+  content: "\e91c";
+}
+
+.icon-spinner:before {
+  content: "\e91d";
+}
+
 .loginModalContainer, .registerModalContainer {
   position: absolute;
   height: 100vh;
@@ -537,6 +545,48 @@ input .signupInput-invalid {
   background-color: #c9c9c9;
 }
 
+#loading {
+  width: 100vw;
+  background-color: #fff;
+  height: 100vh;
+  color: #5faceb;
+  position: absolute;
+  z-index: 2000;
+  padding-bottom: 20%;
+  text-align: center;
+  font-size: 150px;
+  line-height: 80vh;
+  display: none;
+}
+
+.spin {
+  display: inline-block;
+  animation: rotate infinite 1s linear;
+}
+
+@keyframes rotate {
+  0% {
+    color: #5faceb;
+    transform: rotate(0deg);
+  }
+  40% {
+    color: #6ec071;
+    transform: rotate(144deg);
+  }
+  60% {
+    color: #ffb300;
+    transform: rotate(216deg);
+  }
+  80% {
+    color: #7a87cc;
+    transform: rotate(288deg);
+  }
+  100% {
+    color: #5faceb;
+    transform: rotate(360.0deg);
+  }
+}
+
 .searchContainer {
   width: 100%;
 }
@@ -702,8 +752,16 @@ input .signupInput-invalid {
   float: left;
 }
 
+.item .itemInfo .itemCondition, .accountItem .itemInfo .itemCondition, .accountItem .accountItemInfo .itemCondition {
+  color: #3f3f3f;
+}
+
+.item .itemInfo .itemSeller, .accountItem .itemInfo .itemSeller, .accountItem .accountItemInfo .itemSeller {
+  color: #3f3f3f;
+}
+
 .item .itemInfo a, .accountItem .itemInfo a, .accountItem .accountItemInfo a {
-  color: blue;
+  color: black;
   text-decoration: none;
   padding-left: 50px;
   margin-bottom: 0;
@@ -1124,7 +1182,12 @@ body.sellItemBody {
 
 .imageDropContainer .imageDropText {
   color: #c9c9c9;
-  line-height: 300px;
+  line-height: 50px;
+  margin-bottom: 120px;
+}
+
+.imageDropContainer .upload-btn-wrapper {
+  margin-top: 120px;
 }
 
 .imageDropHover {
@@ -1326,6 +1389,15 @@ body.sellItemBody {
   color: black;
 }
 
+.itemSeller {
+  color: black;
+  font-size: 20px;
+}
+
+.itemSeller span {
+  text-decoration: none !important;
+}
+
 .accountInfo {
   width: 100%;
   margin-top: 50px;
@@ -1338,21 +1410,76 @@ body.sellItemBody {
 
 .accountDetails .accountImage {
   width: 200px;
-  margin-left: 10%;
+  padding-left: 10%;
   float: left;
+}
+
+.accountDetails .accountImage input {
+  margin-left: 0;
+}
+
+.accountDetails .accountImage-custom img {
+  width: 100%;
+}
+
+.accountDetails .accountImage-default img {
+  width: 200px;
 }
 
 .accountDetails h1, .accountDetails h2 {
   display: inline-block;
   float: left;
-  width: 50%;
+  width: 65%;
   margin-left: 50px;
+}
+
+.accountImgUploadWrapper {
+  width: auto;
+  float: left;
+  padding-left: 7%;
+  text-align: center;
+}
+
+.accountImgUploadWrapper p {
+  font-size: 15px;
+}
+
+.accountImgUploadWrapper .imageFilterBtn {
+  background-color: #5faceb;
+  width: 120px;
+  height: 35px;
+  color: white;
+  border: 2px solid white;
+  font-size: 17px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.accountImgUploadWrapper .imageFilterBtn:hover {
+  background-color: #3294e5;
+}
+
+.accountImgUploadWrapper #accountImgGreyscale {
+  background-color: #afafaf;
+}
+
+.accountImgUploadWrapper #accountImgGreyscale:hover {
+  background-color: #969696;
+}
+
+.accountImgUploadWrapper #accountImgWarm {
+  background-color: #db2727;
+}
+
+.accountImgUploadWrapper #accountImgWarm:hover {
+  background-color: #b61f1f;
 }
 
 .accountStats {
   float: left;
   width: 10%;
   margin-left: 9%;
+  margin-bottom: 50px;
   margin-right: 10%;
   background-color: #f4f4f4;
   border: 1px solid #e2e2e2;
@@ -1456,6 +1583,37 @@ body.sellItemBody {
   60% {
     transform: translate3d(2px, 0, 0);
   }
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.upload-btn-wrapper:hover {
+  border-color: #3e4da2;
+  color: #3e4da2;
+}
+
+.uploadBtn {
+  border: 2px solid #7a87cc;
+  color: #7a87cc;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .buyBlock {

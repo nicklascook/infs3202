@@ -85,6 +85,11 @@
 
                 $name = $result['name'];
                 $seller = $result['username'];
+
+                if($seller === $_SESSION['username']){
+                    header("location:index.php");
+                }
+
                 $description = $result['description'];
                 $bidding = $result['bidding'];
                 if($result['newCondition'] === 1){

@@ -33,6 +33,11 @@ $(document).ready(function(){
             e.preventDefault();
         }, false);
 
+        $("#imageUploadBtn").on('change', function(e){
+            var image = e.target.files[0]; // get the file
+            createFormData([image]); // create the formData for uploading
+        })
+
     // Creates FormData object to send to uploading function
     function createFormData(image) {
         var formImage = new FormData();
@@ -54,7 +59,6 @@ $(document).ready(function(){
             cache: false,
             processData: false,
             success: function (response) {
-
                 if (response == "error:filesize") {
                     var errorMsg = $("<h3 class='imageDrop-error'>Error: Filesize is too large for uploading (4mb max)</h3>");
                     $(".imageDropPreviewContainer").prepend(errorMsg);

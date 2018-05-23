@@ -320,8 +320,13 @@ body.sellItemBody{
 
     .imageDropText{
         color: darken($grey, 10%);
-        line-height: 300px;
+        line-height: 50px;
+        margin-bottom: 120px;
     
+    }
+
+    .upload-btn-wrapper{
+        margin-top: 120px;
     }
 
 }

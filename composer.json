@@ -3,8 +3,9 @@
     "description": "MarketHub",
     "type": "project",
     "require": {
-        "rickysu/php-livereload": "^0.1.2",
-        "swiftmailer/swiftmailer": "^6.0"
+        "smalot/pdfparser": "*",
+        "phpmailer/phpmailer": "~6.0",
+        "jbzoo/image": "^3.0"
     },
     "authors": [
         {

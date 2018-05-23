@@ -31,6 +31,7 @@
         $email = $result['email'];
         $username = $result['username'];
         $bookmarks = $result['bookmarks'];
+        $accountImage = $result['accountImage'];
 
 
     }
@@ -77,30 +78,81 @@
             ?>            
         </div>
     </nav>
-
+    <div class="loading " id="loading">
+        <span class="icon-spinner spin"></span>
+    </div>
     <div class="accountInfo">
         <div class="accountDetails">
-            <img src="img/account_img.png" class="accountImage">
+            <?php
+            $customAccountImage = false;
+                if($accountImage != ""){
+                    echo "<img src='uploads/$accountImage' class='accountImage accountImage-custom'>";
+                    $customAccountImage = true;
+                } else{
+                        echo "<img src='img/account_img.png' class='accountImage'>";
+                }
+            ?>
             <h1><?php echo $username; ?></h1>
             <?php
                 if($unlockAccountInfo){
                     echo "<h2>$email</h2>";
                 }
-            ?>
+                ?>
+           
+           
         </div>
+         
         <div class="accountStats">
             <h3>Items Sold:</h3>
-            <h3>9</h3>
-            <h3>Items Purchased:</h3>
-            <h3>2</h3>
+            <?php
+                $sqlQuery = "SELECT * FROM orders WHERE seller = '$username'";
+                $result = mysqli_query($mysqli, $sqlQuery);
+                $countSold = 0;
+                if($result->num_rows > 0){
+                    while ($row = $result->fetch_assoc()) {
+                        $countSold++;
+                    }
+
+                } 
+                echo "<h3>$countSold</h3>";
+
+                echo "<h3>Items Purchased:</h3>";
+                $sqlQuery = "SELECT * FROM orders WHERE username = '$username'";
+                $result = mysqli_query($mysqli, $sqlQuery);
+                $countBought = 0;
+                if($result->num_rows > 0){
+                    while ($row = $result->fetch_assoc()) {
+                        $countBought++;
+                    }
+
+                } 
+                 echo "<h3>$countBought</h3>";
+            ?>
         </div>
+        <?php
+            if(!isset($_SESSION['loggedIn']) || !$unlockAccountInfo){
+                exit();
+            }
+        ?>
+        <div class="accountImgUploadWrapper <?php if(!$unlockAccountInfo){echo "hide";} ?>">
+                <p>Upload account image:</p>
+                <!-- <input type="file" name="accountImg" id="accountImgUpload"> -->
+                <div class="upload-btn-wrapper">
+                    <button class="uploadBtn"><span class="icon-upload-cloud"></span> Upload</button>
+                    <input id="accountImgUpload" type="file" name="myfile" />
+                </div>
+
+                <div class="accountImgEditWrapper <?php if(!$customAccountImage){echo "hide";} ?>">
+                <p>Add a filter to image:</p>
+                <button class="imageFilterBtn" id="accountImgGreyscale">Greyscale</button>
+                <button class="imageFilterBtn" id="accountImgWarm">Warm</button>
+                <button class="imageFilterBtn" id="accountImgCool">Cool</button>
+                </div>
+        </div>
+        
     </div>
 
-    <?php
-        if(!isset($_SESSION['loggedIn']) || !$unlockAccountInfo){
-            exit();
-        }
-    ?>
+    
     <div class="accountTabsContainer">
         <div class="accountTabsWrap">
             <h2 class="accountTab accountTab-active">Bookmarks</h2>

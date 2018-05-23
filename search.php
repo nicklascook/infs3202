@@ -1,6 +1,7 @@
 <?php
     session_start();
     require("db.php");
+    require 'vendor/autoload.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -243,6 +244,7 @@
                             $searchQuery .= " ORDER BY newCondition DESC";
                         } 
                     }
+
                     $result = mysqli_query($mysqli, $searchQuery);
                 } else{
                     echo "<h2 style='text-align:center;'>No results were found.</h2><br>";
@@ -278,13 +280,18 @@
                     } else{
                         $itemConditionStr = "Used"; 
                     }
+                    
                     echo "<a href='item.php?id=".$row['id']."'><div class='item'><img class='itemImg' src=".$firstImage.">";
                     echo "<div class='itemInfo'><h3 class='itemTitle'>".$row['name']."</h3>
                         <h4 class='itemPrice'>$".$row['price']."</h4>
+                        <h4 class='itemSeller'>Seller: ".$row['username']."</h4>
                         <h4 class='itemCondition'>".$itemConditionStr."</h4>
                         <h5 class='itemPostage'>Free Postage</h5>
                     </div>";
                     echo "</div></a>";
+
+
+                    
                 }
 
                     

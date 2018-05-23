@@ -1,6 +1,9 @@
 <?php
 session_start();
+
 require("db.php");
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +28,7 @@ require("db.php");
         </div>
         <div class="loginContainer">
             <?php
-                if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn']){
+                if(isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] === true){
                     echo "<span class='accountName'><span class='icon-user'></span> ".$_SESSION['username']." <span class='accountArrow icon-chevron-down'></span></span>";
                     echo "<div class='accountDropdown'>
                         <a href='account.php'>Account</a>
@@ -49,6 +52,9 @@ require("db.php");
         if (isset($_SESSION['message'])){
             echo "<p class='indexMessage'>" . $_SESSION['message'] . "</p>";
             unset($_SESSION['message']);
+        }
+        if(isset($_GET['itemPurchase']) && $_GET['itemPurchase'] == true){
+            echo "<p class='indexMessage'>Item purchased! An invoice has been sent to your email.</p>";
         }
 
     ?>

@@ -153,11 +153,19 @@
         width: 50%;
         display: block;
         float: left;
+        .itemCondition{
+            color: rgb(63, 63, 63);
+        }
+        .itemSeller{
+            color: rgb(63, 63, 63);
+        }
         a {
-            color: blue;
+            // color: blue;
+            color: black;
             text-decoration: none;
             padding-left: 50px;
             margin-bottom: 0;
+            
             &:hover {
                 text-decoration: underline;
             }

@@ -1,6 +1,7 @@
 <?php
     session_start();
     require("db.php");
+    require("error.php");
         
 if($_FILES['image']['name']){ // if file is uploaded:
     //if no errors:
@@ -26,13 +27,16 @@ if($_FILES['image']['name']){ // if file is uploaded:
             }
 
             if($extension === ".png" || $extension === ".gif" || $extension === ".jpg" || $extension === ".jpeg"){ // check that it is an image
-                
-                move_uploaded_file($_FILES['image']['tmp_name'], './uploads/'.$fileName); // Move to web root in /uploads/
+               
+                move_uploaded_file($_FILES['image']['tmp_name'],'./uploads/'.$fileName); // Move to web root in /uploads/
+
+
                 if (!isset($_SESSION['uploadedImages'])){ // Set session variable for when posting form
                     $_SESSION['uploadedImages'] = [];
                 }
                 array_push($_SESSION['uploadedImages'], './uploads/'.$fileName); // add to session array
                 echo './uploads/'.$fileName; // return the file location for jquery to display
+                //  print_r($_FILES);
             } else{
                 echo "error:extension"; // return incorrect extension error
             }

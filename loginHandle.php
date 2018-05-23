@@ -15,7 +15,6 @@
 
             $_SESSION["username"] = $user["username"];
             $_SESSION["email"] = $user["email"];
-            $_SESSION["activated"] = $user["activated"];
 
             $_SESSION["loggedIn"] = true;
 

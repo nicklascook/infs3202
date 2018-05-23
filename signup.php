@@ -1,7 +1,7 @@
 <?php
     session_start();
     require "db.php";
-    if(isset($_SESSION['loggedIn']) == true && $_SESSION['loggedIn'] == true){
+    if(isset($_SESSION['loggedIn']) === true && $_SESSION['loggedIn'] === true){
         header("Location: account.php");
     } 
 ?>
@@ -36,7 +36,8 @@
 
                 <?php
                     if (isset($_SESSION['message'])){
-                        echo "<p class='registerLink' style='color:red;'>Error: User with this email/username already exists! <a href='login.php'>Login</a></p>";
+                        
+                        echo "<p class='registerLink' style='color:red;'>Error: ". $_SESSION['message'] ." <a href='login.php'>Login</a></p>";
                     } else{
                         echo "<p class='registerLink'>Already a user? <a href='login.php'>Login</a></p>";
                     }

@@ -156,6 +156,9 @@
     <div class="itemDetailsColumn">
         <h1><?php echo $name; ?></h1>
         <h2 class='itemDescription'><?php echo $description; ?></h2>
+        <?php
+            echo "<a class='itemSeller' href='account.php?username=$seller'><span>Seller: </span>$seller</a>";
+        ?>
         <h3 class='itemAdditionalInfo'><span>Condition:</span> <?php echo $condition; ?></h3>
         <?php if($brand !== ""){
             echo "<h3 class='itemAdditionalInfo'><span>Brand: </span>$brand</h3>";

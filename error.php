@@ -1,12 +1,5 @@
 <?php
-session_start();
-
-if (isset($_SESSION['errorMessage'])){
-    
-    echo $_SESSION['errorMessage'];
-} else{
-    echo "An error has occured!";
-}
-
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 ?>

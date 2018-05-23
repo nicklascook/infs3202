@@ -344,7 +344,6 @@ $(document).ready(function(){
     $(".accountTab").click(function(){
         $(this).parent().children(".accountTab").removeClass("accountTab-active");
         $(this).addClass("accountTab-active")
-        console.log($(this).text())
         $(this).parent().nextAll(".accountTabContent").hide();
         if ($(this).text() == "Bookmarks"){
             $("#bookmarksTab").show();
@@ -378,7 +377,55 @@ $(document).ready(function(){
         
     })
 
+    $("#accountImgUpload").on('change', function(e){
+        var formImage = new FormData();
+        formImage.append('image', e.target.files[0]);
+        $("#loading").show();
+        $.ajax({
+            url: "accountImgHandle.php?function=upload",
+            type: "post",
+            data: formImage,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (response) {
+                location.reload();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+    })
 
+    $('#accountImgGreyscale').click(function(){
+        filterAccountImage("greyscale");
+    })
+
+    $('#accountImgWarm').click(function(){
+        filterAccountImage("warm");
+    })
+
+    $('#accountImgCool').click(function(){
+        filterAccountImage("cool");
+    })
+
+    function filterAccountImage(filter){
+        var imgPath = $(".accountImage").attr("src").split("uploads/")[1];
+        $("#loading").show();
+        $.ajax({
+            url: "accountImgHandle.php?function=" + filter +"&imgPath=" + imgPath,
+            type: "post",
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (response) {
+                location.reload();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+    }
 
     
 

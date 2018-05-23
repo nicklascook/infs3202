@@ -33,11 +33,10 @@
         $sqlEntry = "INSERT INTO users (username, email, password, hash) " 
             . "VALUES ('$username','$email','$password', '$hash')";
         if ($mysqli->query($sqlEntry)){
-            $_SESSION["activated"] = 0;
             $_SESSION["loggedIn"] = true;
             $_SESSION['hash'] = $hash;
 
-            header("Location: activation.php?sendVerify=true");
+            header("Location: index.php");
 
 
 

@@ -1,13 +1,11 @@
 <?php
     session_start();
     require("db.php");
-
+    require("error.php");
 
     if(isset($_SESSION['loggedIn']) != 1 || $_SESSION['loggedIn'] === 0){
         header("Location: login.php");
-    } elseif($_SESSION['activated'] == 0){
-        header("Location: activation.php");
-    }
+    } 
     
     // Clear out any images already uploaded but not posted:
     unset($_SESSION['uploadedImages']);
@@ -77,6 +75,11 @@
                     <!-- <input type="file" name="photo" size="25" /> -->
 
                     <div class="imageDropContainer">
+                        <!-- <input type="file" name="imageUpload" id="imageUploadBtn"> -->
+                        <div class="upload-btn-wrapper">
+                            <button class="uploadBtn"><span class="icon-upload-cloud"></span> Upload</button>
+                            <input id="imageUploadBtn" type="file" name="myfile" />
+                        </div>
                         <div class="imageDropText">Drag and Drop Images Here
                             <span class="icon-camera"></span>
                         </div>
