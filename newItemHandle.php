@@ -3,9 +3,7 @@
     require("db.php");
 
 
-    foreach( $_SESSION['uploadedImages'] as $imageName){
-        echo "<;>" . $imageName;
-    }
+   
     $username = $_SESSION['username'];
     $name = $_POST['name'];
     $category = $_POST['category'];

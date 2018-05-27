@@ -267,6 +267,23 @@ body.sellItemBody{
         }
 
     }
+    .pricingBlock-disabled{
+        pointer-events:none;
+        opacity: 0.5;
+        position: relative;
+        text-align: center;
+        h2{
+            position: absolute;
+            display: inline-block;
+            background-color: red;
+            color: white;
+            left:0;
+            top: 20%;
+            width: 100%;
+            text-align: center;
+
+        }
+    }
 
     .pricingBlock-active{
         border-color: $accentColor;

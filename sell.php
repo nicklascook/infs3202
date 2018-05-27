@@ -150,7 +150,8 @@
                     <section>
                         <h2>Pricing:</h2>
                     <div class="pricingBlockContainer">
-                        <div class="pricingBlock">
+                        <div class="pricingBlock pricingBlock-disabled">
+                            <h2>Coming Soon!</h2>
                             <h3><span class="icon-auction"></span> Bidding Starting Price</h3>
                             <input type="radio" name="pricetype" value="bid" id="bidRadio" required>
                             <span><label><span class="icon-dollar-sign"></span></label><input type="number" step="0.01" name="bidprice" id="bidPrice" placeholder="Price"></span>

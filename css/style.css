@@ -1128,6 +1128,24 @@ body.sellItemBody {
   display: inline-block;
 }
 
+.pricingBlockContainer .pricingBlock-disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  position: relative;
+  text-align: center;
+}
+
+.pricingBlockContainer .pricingBlock-disabled h2 {
+  position: absolute;
+  display: inline-block;
+  background-color: red;
+  color: white;
+  left: 0;
+  top: 20%;
+  width: 100%;
+  text-align: center;
+}
+
 .pricingBlockContainer .pricingBlock-active {
   border-color: #7a87cc;
 }
@@ -1377,6 +1395,7 @@ body.sellItemBody {
 
 .itemPostageWrap {
   padding: 30px;
+  margin-bottom: 80px;
 }
 
 .itemPostageWrap p {
@@ -1433,48 +1452,6 @@ body.sellItemBody {
   margin-left: 50px;
 }
 
-.accountImgUploadWrapper {
-  width: auto;
-  float: left;
-  padding-left: 7%;
-  text-align: center;
-}
-
-.accountImgUploadWrapper p {
-  font-size: 15px;
-}
-
-.accountImgUploadWrapper .imageFilterBtn {
-  background-color: #5faceb;
-  width: 120px;
-  height: 35px;
-  color: white;
-  border: 2px solid white;
-  font-size: 17px;
-  transition: 0.2s;
-  cursor: pointer;
-}
-
-.accountImgUploadWrapper .imageFilterBtn:hover {
-  background-color: #3294e5;
-}
-
-.accountImgUploadWrapper #accountImgGreyscale {
-  background-color: #afafaf;
-}
-
-.accountImgUploadWrapper #accountImgGreyscale:hover {
-  background-color: #969696;
-}
-
-.accountImgUploadWrapper #accountImgWarm {
-  background-color: #db2727;
-}
-
-.accountImgUploadWrapper #accountImgWarm:hover {
-  background-color: #b61f1f;
-}
-
 .accountStats {
   float: left;
   width: 10%;
@@ -1494,6 +1471,7 @@ body.sellItemBody {
   float: left;
   margin-top: 50px;
   border-top: 4px solid #5565be;
+  margin-bottom: 100px;
 }
 
 .accountTabsWrap {
@@ -1616,6 +1594,61 @@ body.sellItemBody {
   cursor: pointer;
 }
 
+.accountImgUploadWrapper, .accountSupportWrapper {
+  margin: 0 auto;
+  display: block;
+  width: 30%;
+  border: 3px solid #e2e2e2;
+  padding: 50px;
+  padding-left: 10%;
+  border-radius: 20px;
+  margin-top: 30px;
+}
+
+.accountImgUploadWrapper p, .accountSupportWrapper p {
+  font-size: 15px;
+}
+
+.accountImgUploadWrapper h2, .accountSupportWrapper h2 {
+  margin-top: 0;
+}
+
+.accountImgUploadWrapper .imageFilterBtn, .accountSupportWrapper .imageFilterBtn {
+  background-color: #5faceb;
+  width: 120px;
+  height: 35px;
+  color: white;
+  border: 2px solid white;
+  font-size: 17px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.accountImgUploadWrapper .imageFilterBtn:hover, .accountSupportWrapper .imageFilterBtn:hover {
+  background-color: #3294e5;
+}
+
+.accountImgUploadWrapper #accountImgGreyscale, .accountSupportWrapper #accountImgGreyscale {
+  background-color: #afafaf;
+}
+
+.accountImgUploadWrapper #accountImgGreyscale:hover, .accountSupportWrapper #accountImgGreyscale:hover {
+  background-color: #969696;
+}
+
+.accountImgUploadWrapper #accountImgWarm, .accountSupportWrapper #accountImgWarm {
+  background-color: #db2727;
+}
+
+.accountImgUploadWrapper #accountImgWarm:hover, .accountSupportWrapper #accountImgWarm:hover {
+  background-color: #b61f1f;
+}
+
+.accountSupportWrapper p {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
 .buyBlock {
   background-color: #efefef;
   display: block;
@@ -1648,6 +1681,8 @@ body.sellItemBody {
   background-color: #efefef;
   display: block;
   height: 200px;
+  padding-bottom: 70px;
+  margin-bottom: 50px;
 }
 
 .buyItemImgCol img {
@@ -1665,6 +1700,8 @@ body.sellItemBody {
   height: 50px;
   height: 200px;
   padding-top: 20px;
+  padding-bottom: 70px;
+  margin-bottom: 50px;
 }
 
 .buyItemPriceCol {
@@ -1675,6 +1712,8 @@ body.sellItemBody {
   text-align: center;
   height: 200px;
   font-size: 20px;
+  padding-bottom: 70px;
+  margin-bottom: 50px;
 }
 
 .buyPostageBlock {
@@ -1709,7 +1748,7 @@ body.sellItemBody {
   margin: 0 auto;
   display: flex;
   justify-content: center;
-  height: 70px;
+  height: 80px;
   margin-bottom: 50px;
 }
 
@@ -1782,6 +1821,7 @@ body {
 
 .recentlyViewed {
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .recentlyViewed h2 {

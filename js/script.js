@@ -389,6 +389,7 @@ $(document).ready(function(){
             cache: false,
             processData: false,
             success: function (response) {
+                
                 location.reload();
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -427,6 +428,28 @@ $(document).ready(function(){
         });
     }
 
+    $("#accountPdfUpload").on('change', function(e){
+        var formImage = new FormData();
+        formImage.append('pdf', document.getElementById("accountPdfUpload").files[0]);
+        
+        $.ajax({
+            url: "invoicePdfHandle.php",
+            type: "post",
+            data: formImage,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function (response) {
+                var response = JSON.parse(response);
+                $('.accountSupportWrapper').append("<h3>A new support ticket has been opened for item: <br><br><strong>"+ response[0] +"<br> Item Id:"
+                + response[1] + "</strong><br><br> A team member will be in contact with you shortly.</h3>")
+                console.log()
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+    })
     
 
 

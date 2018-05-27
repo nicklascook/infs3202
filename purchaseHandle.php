@@ -57,7 +57,8 @@
 
         $pdf->SetFont('Arial','',10);
         $pdf->Cell(5);
-        $pdf->Cell(185,10,'Invoice number: ' . $invoiceNumber);
+        $pdf->Cell(60,10,'Invoice number: ' . $invoiceNumber);
+        $pdf->Cell(60,10,'Item Id: ' . $id);
         $pdf->Ln(10);
         $pdf->SetFont('Arial','',18);
         
@@ -89,9 +90,14 @@
             
         
         $array = str_split($id);
+        while(count($array) < 8){
+            array_unshift($array, 0);
+        }
+
         $barcodeCount = 0;
         $arrayCount = count($array);
-        $barcodeStartX = 105 - ($arrayCount/2)*4;
+        $barcodeStartX = 115 - ($arrayCount/2)*4;
+
         foreach($array as $value){
             $value = ($value/10)*2;
             // $pdf->Rect( (90 + $barcodeCount*4) , 200, $value, 20, 'F');
@@ -135,6 +141,9 @@
 
             $mail->send();
             echo 'Message has been sent';
+
+            $_SESSION['message'] = "Item purchased! An invoice has been sent to your email.";
+
 
         } catch (Exception $e) {
             echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;

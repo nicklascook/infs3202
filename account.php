@@ -84,6 +84,12 @@
     <div class="accountInfo">
         <div class="accountDetails">
             <?php
+            if (isset($_SESSION['message'])){
+                echo "<p class='indexMessage'>" . $_SESSION['message'] . "</p>";
+                unset($_SESSION['message']);
+            }
+
+
             $customAccountImage = false;
                 if($accountImage != ""){
                     echo "<img src='uploads/$accountImage' class='accountImage accountImage-custom'>";
@@ -131,24 +137,12 @@
         </div>
         <?php
             if(!isset($_SESSION['loggedIn']) || !$unlockAccountInfo){
-                exit();
+                  exit();
             }
         ?>
-        <div class="accountImgUploadWrapper <?php if(!$unlockAccountInfo){echo "hide";} ?>">
-                <p>Upload account image:</p>
-                <!-- <input type="file" name="accountImg" id="accountImgUpload"> -->
-                <div class="upload-btn-wrapper">
-                    <button class="uploadBtn"><span class="icon-upload-cloud"></span> Upload</button>
-                    <input id="accountImgUpload" type="file" name="myfile" />
-                </div>
+       
 
-                <div class="accountImgEditWrapper <?php if(!$customAccountImage){echo "hide";} ?>">
-                <p>Add a filter to image:</p>
-                <button class="imageFilterBtn" id="accountImgGreyscale">Greyscale</button>
-                <button class="imageFilterBtn" id="accountImgWarm">Warm</button>
-                <button class="imageFilterBtn" id="accountImgCool">Cool</button>
-                </div>
-        </div>
+        
         
     </div>
 
@@ -157,7 +151,7 @@
         <div class="accountTabsWrap">
             <h2 class="accountTab accountTab-active">Bookmarks</h2>
             <h2 class="accountTab">Items For Sale</h2>
-            <h2 class="accountTab">Order History</h2>
+            <h2 class="accountTab">Settings</h2>
         </div>
 
         <div id="bookmarksTab" class="bookmarksTab accountTabContent">
@@ -175,8 +169,7 @@
                         $result = $result->fetch_assoc();
 
                         list($arr, $firstImage) = explode("<;>", $result["imageLocation"]);
-                        // echo "<div class='item'><img src='". $firstImage ."'></div><br>";
-                        // echo "<script src='js/script.js'>console.log('dope')</script>";
+      
                         if($result['newCondition'] === 1){
                             $itemConditionStr = "New";
                         } else{
@@ -201,8 +194,7 @@
                 if($result->num_rows > 0){
                     while ($row = $result->fetch_assoc()) {
                         list($arr, $firstImage) = explode("<;>", $row["imageLocation"]);
-                        // echo "<div class='item'><img src='". $firstImage ."'></div><br>";
-                        // echo "<script src='js/script.js'>console.log('dope')</script>";
+
                         if($row['newCondition'] === 1){
                             $itemConditionStr = "New";
                         } else{
@@ -221,7 +213,31 @@
             ?>
         </div>
         <div id="orderHistoryTab" class="orderHistoryTab accountTabContent">
-            hahoo 
+                <div class="accountImgUploadWrapper <?php if(!$unlockAccountInfo){echo "hide";} ?>">
+                    <h2>Edit Account Image:</h2>
+                    <p>Upload account image:</p>
+                    <!-- <input type="file" name="accountImg" id="accountImgUpload"> -->
+                    <div class="upload-btn-wrapper">
+                        <button class="uploadBtn"><span class="icon-upload-cloud"></span> Upload</button>
+                        <input id="accountImgUpload" type="file" name="myfile" />
+                    </div>
+
+                    <div class="accountImgEditWrapper <?php if(!$customAccountImage){echo "hide";} ?>">
+                        <p>Add a filter to image:</p>
+                        <button class="imageFilterBtn" id="accountImgGreyscale">Greyscale</button>
+                        <button class="imageFilterBtn" id="accountImgWarm">Warm</button>
+                        <button class="imageFilterBtn" id="accountImgCool">Cool</button>
+                    </div>
+
+                 </div>
+                    <div class="accountSupportWrapper">
+                        <h2>Account Support:</h2>
+                        <p>Have an issue with your purchase? Upload your invoice and our support team will be in contact with you as soon as possible.</p>
+                        <div class="upload-btn-wrapper">
+                            <button class="uploadBtn"><span class="icon-upload-cloud"></span> Upload PDF</button>
+                            <input id="accountPdfUpload" type="file" name="myfile" accept="application/pdf" />
+                        </div> 
+                    </div> 
         </div>
 
     </div>

@@ -53,9 +53,7 @@ require("db.php");
             echo "<p class='indexMessage'>" . $_SESSION['message'] . "</p>";
             unset($_SESSION['message']);
         }
-        if(isset($_GET['itemPurchase']) && $_GET['itemPurchase'] == true){
-            echo "<p class='indexMessage'>Item purchased! An invoice has been sent to your email.</p>";
-        }
+    
 
     ?>
 

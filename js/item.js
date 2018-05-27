@@ -10,7 +10,6 @@ $(document).ready(function(){
     $("#bookmarkBtn").click(function(){
 
         var id = getUrlParam("id");
-        console.log(id);
         data = {
             "id": id
         };
@@ -21,7 +20,6 @@ $(document).ready(function(){
                 data: data,
                 success: function (response) {
                     // change the look of the button + remove ability to press it
-                    console.log(response);
                     if(response){
                         $("#bookmarkBtn").prop('disabled', true);
                         $("#bookmarkBtn").text("Bookmarked");
@@ -41,10 +39,6 @@ $(document).ready(function(){
         }
     })
 
-    // $(".loginContainer").click(function () {
-    //     $(".accountDropdown").slideToggle(100);
-    //     $(".accountArrow").toggleClass("icon-chevron-up")
-    //     $(".accountArrow").toggleClass("icon-chevron-down")
-    // });
+ 
 
 });

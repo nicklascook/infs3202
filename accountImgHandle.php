@@ -13,7 +13,7 @@
         $fileName = strtolower($_FILES['image']['name']); //rename file, lower case
     
         if($_FILES['image']['size'] > (4096000)){ // check that file is 4mb max
-                echo "error:filesize";
+                $_SESSION['message'] = "Error: file size is too large. 4MB max allowed.";
         } else{ 
             $extension = "." . pathinfo($fileName, PATHINFO_EXTENSION); // Get the extension of the file
             // MAKE SURE NO OTHER IMAGE OF THE SAME NAME EXISTS
@@ -33,6 +33,8 @@
                 mysqli_query($mysqli, $sqlQuery) or die(mysqli_error($mysqli));
     
     
+             } else{
+                 $_SESSION['message'] = "File must be of type: .png, .gif, .jpg, .jpeg.";
              }
     
         }

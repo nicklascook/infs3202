@@ -141,7 +141,7 @@
 
             <div class="buyItemPriceCol">
                 <?php
-                    echo "<h4>$$price</h4>";
+                    echo "<h4 class='buyItemPrice'>$$price</h4>";
                 ?>
             </div>
         </div>

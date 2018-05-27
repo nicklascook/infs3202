@@ -31,9 +31,9 @@
             <h2><span class="icon-user"></span> Welcome back</h2>
             <form action="loginHandle.php" method="POST" class="loginForm">
                 <p>Username:</p> 
-                <input type="text" name="username" placeholder="">
+                <input type="text" name="username" placeholder="" required>
                 <p>Password:</p> 
-                <input type="password" name="password" placeholder="">
+                <input type="password" name="password" placeholder="" required>
                 <button type="submit" class="btn">Login <span class="icon-arrow-right"></span></button>
 
 

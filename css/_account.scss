@@ -34,40 +34,7 @@
         margin-left: 50px;
     }
 }
- .accountImgUploadWrapper {
-     width: auto;
-     float: left;
-     padding-left: 7%;
-     text-align: center;
-     p {
-         font-size: 15px;
-     }
-     .imageFilterBtn{
-         background-color: $primaryColor;
-         width: 120px;
-         height: 35px;
-         color: white;
-         border: 2px solid white;
-         font-size: 17px;
-         transition: 0.2s;
-         cursor: pointer;
-         &:hover{
-             background-color: darken($primaryColor, 10%);
-         }
-     }
-     #accountImgGreyscale{
-         background-color: darken($grey, 20%);
-         &:hover{
-             background-color: darken($grey, 30%);
-         }
-     }
-     #accountImgWarm{
-         background-color: rgb(219, 39, 39);
-         &:hover{
-            background-color: rgb(182, 31, 31);
-         }
-     }
- }
+ 
 .accountStats{
     float: left;
     width: 10%;
@@ -86,6 +53,7 @@
     float: left;
     margin-top: 50px;
     border-top: 4px solid darken($accentColor, 10%);
+    margin-bottom: 100px;
 }
 .accountTabsWrap{
     width: 100%;
@@ -206,4 +174,52 @@
     top: 0;
     opacity: 0;
     cursor: pointer;
+}
+.accountImgUploadWrapper {
+    margin: 0 auto;
+    display: block;
+    width: 30%;
+    border: 3px solid $grey;
+    padding: 50px;
+    padding-left: 10%;
+    border-radius: 20px;
+    margin-top: 30px; //  text-align: center;
+    p {
+        font-size: 15px;
+    }
+    h2 {
+        margin-top: 0;
+    }
+    .imageFilterBtn {
+        background-color: $primaryColor;
+        width: 120px;
+        height: 35px;
+        color: white;
+        border: 2px solid white;
+        font-size: 17px;
+        transition: 0.2s;
+        cursor: pointer;
+        &:hover {
+            background-color: darken($primaryColor, 10%);
+        }
+    }
+    #accountImgGreyscale {
+        background-color: darken($grey, 20%);
+        &:hover {
+            background-color: darken($grey, 30%);
+        }
+    }
+    #accountImgWarm {
+        background-color: rgb(219, 39, 39);
+        &:hover {
+            background-color: rgb(182, 31, 31);
+        }
+    }
+}
+.accountSupportWrapper{
+    @extend .accountImgUploadWrapper;
+    p{
+        margin-bottom: 30px;
+        margin-top: 30px;
+    }
 }

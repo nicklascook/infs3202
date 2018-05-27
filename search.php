@@ -233,6 +233,8 @@
 
                 // If $appendAnd is false, then no additions were made to the original $searchQuery => terminate search
                 if($appendAnd){
+
+                    
                     
                     // APPEND to the search query to sort by the GET parameter 'sort' 
                     if(isset($_GET['sort']) && $_GET['sort'] !== "bestmatch"){
@@ -249,7 +251,14 @@
                 } else{
                     echo "<h2 style='text-align:center;'>No results were found.</h2><br>";
                     echo "<h3>Showing similar results:</h3>";
-                    $result = mysqli_query($mysqli, "SELECT * FROM items");
+                    
+                    $searchQuery = "SELECT * FROM items";
+
+                    if(isset($_SESSION['username'])){ // Ensure user does not see his own items
+                        $username = $_SESSION['username'];
+                        $searchQuery .= " WHERE username != '$username'";
+                    }
+                    $result = mysqli_query($mysqli, $searchQuery);
                 }
 
                 if($result->num_rows == 0){ // NO results were found
@@ -257,10 +266,22 @@
                     echo "<h3>Showing similar results:</h3>";
                     if(count($searchCriteria) > 0){ // Find if any parameters were given
                         if(count($searchCriteria) == 1 && in_array("name", $searchCriteria)){ // if only name was given, but returned no correct results, show random items.
-                            $result = mysqli_query($mysqli, "SELECT * FROM items");
+                            $searchQuery = "SELECT * FROM items";
+                            
+                            if(isset($_SESSION['username'])){ // Ensure user does not see his own items
+                                $username = $_SESSION['username'];
+                                $searchQuery .= " WHERE username != '$username'";
+                            }
+                            $result = mysqli_query($mysqli, $searchQuery);
                             echo "<h3>Showing similar results:</h3>";
                         } else if(count($searchCriteria) == 2 && in_array("name", $searchCriteria) && in_array("category", $searchCriteria)){ // if both name and category were given, show only from category
-                            $result = mysqli_query($mysqli, "SELECT * FROM items WHERE category LIKE '%$category%'");
+                            $searchQuery = "SELECT * FROM items WHERE category LIKE '%$category%'";
+                            
+                            if(isset($_SESSION['username'])){ // Ensure user does not see his own items
+                                $username = $_SESSION['username'];
+                                $searchQuery .= " AND username != '$username'";
+                            }
+                            $result = mysqli_query($mysqli, $searchQuery);
                             echo "<h3>Showing similar results from ".ucfirst($category) .":</h3>";
                         }
                     }
@@ -268,7 +289,17 @@
 
                 //Catch edge circumstances where still no results are found
                 if($result->num_rows == 0){
-                    $result = mysqli_query($mysqli, "SELECT * FROM items");
+                    $searchQuery = "SELECT * FROM items";
+                    if(isset($_SESSION['username'])){ // Ensure user does not see his own items
+                        $username = $_SESSION['username'];
+                        $searchQuery .= " WHERE username != '$username'";
+                    }
+                    $result = mysqli_query($mysqli, $searchQuery);
+                    // Catch ABSOLUTE edge case where absolutely no results can be gathered from database
+                    if($result->num_rows == 0){
+                        echo "<h4 style='color:red'>There may be an issue with our database. Please contact our support team if issue persists. </h4>";
+                    }
+
                 }
 
                 while ($row = $result->fetch_assoc()) {
